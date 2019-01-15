@@ -1,0 +1,11 @@
+version: '2'
+services:
+    plandb-postgresql:
+        image: postgres:10.4
+        # volumes:
+        #     - ~/volumes/jhipster/plandb/postgresql/:/var/lib/postgresql/data/
+        environment:
+            - POSTGRES_USER=plandb
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

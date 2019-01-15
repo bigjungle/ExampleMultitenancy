@@ -1,0 +1,20 @@
+version: '2'
+services:
+    plandb-app:
+        image: plandb
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:postgresql://plandb-postgresql:5432/plandb
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_JEST_URI=http://plandb-elasticsearch:9200
+        ports:
+            - 8080:8080
+    plandb-postgresql:
+        extends:
+            file: postgresql.yml
+            service: plandb-postgresql
+    plandb-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: plandb-elasticsearch
