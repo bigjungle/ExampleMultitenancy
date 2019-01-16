@@ -1,0 +1,99 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-verify-rec-sdm-suffix-heading" jhiTranslate="plandbApp.verifyRec.home.createOrEditLabel">Create or edit a Verify Rec</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!verifyRec.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="verifyRec.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.name" for="field_name" [ngbTooltip]="'plandbApp.verifyRec.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="verifyRec.name" required maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.descString" for="field_descString" [ngbTooltip]="'plandbApp.verifyRec.help.descString' | translate">Desc String</label>
+                    <input type="text" class="form-control" name="descString" id="field_descString"
+                        [(ngModel)]="verifyRec.descString" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.descString?.dirty && editForm.controls.descString?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.descString?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.verifyResult" for="field_verifyResult" [ngbTooltip]="'plandbApp.verifyRec.help.verifyResult' | translate">Verify Result</label>
+                    <input type="checkbox" class="form-control" name="verifyResult" id="field_verifyResult"
+                        [(ngModel)]="verifyRec.verifyResult" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.verifyScore" for="field_verifyScore" [ngbTooltip]="'plandbApp.verifyRec.help.verifyScore' | translate">Verify Score</label>
+                    <input type="number" class="form-control" name="verifyScore" id="field_verifyScore"
+                        [(ngModel)]="verifyRec.verifyScore" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.remarks" for="field_remarks" [ngbTooltip]="'plandbApp.verifyRec.help.remarks' | translate">Remarks</label>
+                    <input type="text" class="form-control" name="remarks" id="field_remarks"
+                        [(ngModel)]="verifyRec.remarks" maxlength="1000"/>
+                    <div [hidden]="!(editForm.controls.remarks?.dirty && editForm.controls.remarks?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.remarks?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1000 }">
+                        This field cannot be longer than 1000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.insertTime" for="field_insertTime" [ngbTooltip]="'plandbApp.verifyRec.help.insertTime' | translate">Insert Time</label>
+                    <div class="d-flex">
+                        <input id="field_insertTime" type="datetime-local" class="form-control" name="insertTime" [(ngModel)]="insertTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.updateTime" for="field_updateTime" [ngbTooltip]="'plandbApp.verifyRec.help.updateTime' | translate">Update Time</label>
+                    <div class="d-flex">
+                        <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="updateTime"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.createdBy" for="field_createdBy">Created By</label>
+                    <select class="form-control" id="field_createdBy" name="createdBy" [(ngModel)]="verifyRec.createdById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.verifyRec.modifiedBy" for="field_modifiedBy">Modified By</label>
+                    <select class="form-control" id="field_modifiedBy" name="modifiedBy" [(ngModel)]="verifyRec.modifiedById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

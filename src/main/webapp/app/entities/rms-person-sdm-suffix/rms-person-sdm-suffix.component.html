@@ -1,0 +1,193 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.rmsPerson.home.title">Rms People</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rms-person-sdm-suffix" [routerLink]="['/rms-person-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.rmsPerson.home.createLabel">
+            Create new Rms Person
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.rmsPerson.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rmsPeople">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="personName"><span jhiTranslate="plandbApp.rmsPerson.personName">Person Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstName"><span jhiTranslate="plandbApp.rmsPerson.firstName">First Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="jobId"><span jhiTranslate="plandbApp.rmsPerson.jobId">Job Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="lastName"><span jhiTranslate="plandbApp.rmsPerson.lastName">Last Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="otherName"><span jhiTranslate="plandbApp.rmsPerson.otherName">Other Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sex"><span jhiTranslate="plandbApp.rmsPerson.sex">Sex</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="birthday"><span jhiTranslate="plandbApp.rmsPerson.birthday">Birthday</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pic"><span jhiTranslate="plandbApp.rmsPerson.pic">Pic</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="icon"><span jhiTranslate="plandbApp.rmsPerson.icon">Icon</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mobile"><span jhiTranslate="plandbApp.rmsPerson.mobile">Mobile</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="depAddress"><span jhiTranslate="plandbApp.rmsPerson.depAddress">Dep Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="depCode"><span jhiTranslate="plandbApp.rmsPerson.depCode">Dep Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dutyId"><span jhiTranslate="plandbApp.rmsPerson.dutyId">Duty Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="dimissionFlag"><span jhiTranslate="plandbApp.rmsPerson.dimissionFlag">Dimission Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="headerFlag"><span jhiTranslate="plandbApp.rmsPerson.headerFlag">Header Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="satrapFlag"><span jhiTranslate="plandbApp.rmsPerson.satrapFlag">Satrap Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="leaderFlag"><span jhiTranslate="plandbApp.rmsPerson.leaderFlag">Leader Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="postFlag1"><span jhiTranslate="plandbApp.rmsPerson.postFlag1">Post Flag 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="postFlag2"><span jhiTranslate="plandbApp.rmsPerson.postFlag2">Post Flag 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="postFlag3"><span jhiTranslate="plandbApp.rmsPerson.postFlag3">Post Flag 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="officeTel"><span jhiTranslate="plandbApp.rmsPerson.officeTel">Office Tel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fax"><span jhiTranslate="plandbApp.rmsPerson.fax">Fax</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mail1"><span jhiTranslate="plandbApp.rmsPerson.mail1">Mail 1</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mail2"><span jhiTranslate="plandbApp.rmsPerson.mail2">Mail 2</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="familyTel"><span jhiTranslate="plandbApp.rmsPerson.familyTel">Family Tel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="familyAdd"><span jhiTranslate="plandbApp.rmsPerson.familyAdd">Family Add</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="familyCode"><span jhiTranslate="plandbApp.rmsPerson.familyCode">Family Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="personDesc"><span jhiTranslate="plandbApp.rmsPerson.personDesc">Person Desc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="idCode"><span jhiTranslate="plandbApp.rmsPerson.idCode">Id Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="pop3"><span jhiTranslate="plandbApp.rmsPerson.pop3">Pop 3</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="smtp"><span jhiTranslate="plandbApp.rmsPerson.smtp">Smtp</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailUsername"><span jhiTranslate="plandbApp.rmsPerson.mailUsername">Mail Username</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailPassword"><span jhiTranslate="plandbApp.rmsPerson.mailPassword">Mail Password</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mailKeepFlag"><span jhiTranslate="plandbApp.rmsPerson.mailKeepFlag">Mail Keep Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="personSort"><span jhiTranslate="plandbApp.rmsPerson.personSort">Person Sort</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="levelNum"><span jhiTranslate="plandbApp.rmsPerson.levelNum">Level Num</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="personStateId"><span jhiTranslate="plandbApp.rmsPerson.personStateId">Person State Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by01"><span jhiTranslate="plandbApp.rmsPerson.by01">By 01</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by02"><span jhiTranslate="plandbApp.rmsPerson.by02">By 02</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by03"><span jhiTranslate="plandbApp.rmsPerson.by03">By 03</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by04"><span jhiTranslate="plandbApp.rmsPerson.by04">By 04</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by05"><span jhiTranslate="plandbApp.rmsPerson.by05">By 05</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by06"><span jhiTranslate="plandbApp.rmsPerson.by06">By 06</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by07"><span jhiTranslate="plandbApp.rmsPerson.by07">By 07</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by08"><span jhiTranslate="plandbApp.rmsPerson.by08">By 08</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by09"><span jhiTranslate="plandbApp.rmsPerson.by09">By 09</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by10"><span jhiTranslate="plandbApp.rmsPerson.by10">By 10</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.rmsPerson.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.rmsPerson.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.rmsPerson.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.rmsPerson.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.rmsPerson.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyTime"><span jhiTranslate="plandbApp.rmsPerson.verifyTime">Verify Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="plandbApp.rmsPerson.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.rmsPerson.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.rmsPerson.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedByUserName"><span jhiTranslate="plandbApp.rmsPerson.verifiedBy">Verified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let rmsPerson of rmsPeople ;trackBy: trackId">
+                <td><a [routerLink]="['/rms-person-sdm-suffix', rmsPerson.id, 'view' ]">{{rmsPerson.id}}</a></td>
+                <td>{{rmsPerson.personName}}</td>
+                <td>{{rmsPerson.firstName}}</td>
+                <td>{{rmsPerson.jobId}}</td>
+                <td>{{rmsPerson.lastName}}</td>
+                <td>{{rmsPerson.otherName}}</td>
+                <td>{{rmsPerson.sex}}</td>
+                <td>{{rmsPerson.birthday | date:'medium'}}</td>
+                <td>{{rmsPerson.pic}}</td>
+                <td>{{rmsPerson.icon}}</td>
+                <td>{{rmsPerson.mobile}}</td>
+                <td>{{rmsPerson.depAddress}}</td>
+                <td>{{rmsPerson.depCode}}</td>
+                <td>{{rmsPerson.dutyId}}</td>
+                <td>{{rmsPerson.dimissionFlag}}</td>
+                <td>{{rmsPerson.headerFlag}}</td>
+                <td>{{rmsPerson.satrapFlag}}</td>
+                <td>{{rmsPerson.leaderFlag}}</td>
+                <td>{{rmsPerson.postFlag1}}</td>
+                <td>{{rmsPerson.postFlag2}}</td>
+                <td>{{rmsPerson.postFlag3}}</td>
+                <td>{{rmsPerson.officeTel}}</td>
+                <td>{{rmsPerson.fax}}</td>
+                <td>{{rmsPerson.mail1}}</td>
+                <td>{{rmsPerson.mail2}}</td>
+                <td>{{rmsPerson.familyTel}}</td>
+                <td>{{rmsPerson.familyAdd}}</td>
+                <td>{{rmsPerson.familyCode}}</td>
+                <td>{{rmsPerson.personDesc}}</td>
+                <td>{{rmsPerson.idCode}}</td>
+                <td>{{rmsPerson.pop3}}</td>
+                <td>{{rmsPerson.smtp}}</td>
+                <td>{{rmsPerson.mailUsername}}</td>
+                <td>{{rmsPerson.mailPassword}}</td>
+                <td>{{rmsPerson.mailKeepFlag}}</td>
+                <td>{{rmsPerson.personSort}}</td>
+                <td>{{rmsPerson.levelNum}}</td>
+                <td>{{rmsPerson.personStateId}}</td>
+                <td>{{rmsPerson.by01}}</td>
+                <td>{{rmsPerson.by02}}</td>
+                <td>{{rmsPerson.by03}}</td>
+                <td>{{rmsPerson.by04}}</td>
+                <td>{{rmsPerson.by05}}</td>
+                <td>{{rmsPerson.by06}}</td>
+                <td>{{rmsPerson.by07}}</td>
+                <td>{{rmsPerson.by08}}</td>
+                <td>{{rmsPerson.by09}}</td>
+                <td>{{rmsPerson.by10}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + rmsPerson.validType}}">{{rmsPerson.validType}}</td>
+                <td>{{rmsPerson.validBegin | date:'medium'}}</td>
+                <td>{{rmsPerson.validEnd | date:'medium'}}</td>
+                <td>{{rmsPerson.insertTime | date:'medium'}}</td>
+                <td>{{rmsPerson.updateTime | date:'medium'}}</td>
+                <td>{{rmsPerson.verifyTime | date:'medium'}}</td>
+                <td>{{rmsPerson.serialNumber}}</td>
+                <td>
+                    <div *ngIf="rmsPerson.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsPerson.createdById , 'view' ]" >{{rmsPerson.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsPerson.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsPerson.modifiedById , 'view' ]" >{{rmsPerson.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsPerson.verifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsPerson.verifiedById , 'view' ]" >{{rmsPerson.verifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rms-person-sdm-suffix', rmsPerson.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rms-person-sdm-suffix', rmsPerson.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rms-person-sdm-suffix/'+ rmsPerson.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

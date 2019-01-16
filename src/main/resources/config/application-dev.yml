@@ -36,9 +36,9 @@ spring:
             indent-output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:5432/plandb
-        username: plandb
-        password:
+        url: jdbc:postgresql://192.168.10.184:5432/aldb?currentSchema=plandbtest5
+        username: asys
+        password: asys
         hikari:
             auto-commit: false
     jpa:
@@ -53,10 +53,8 @@ spring:
             hibernate.generate_statistics: true
             hibernate.cache.region.factory_class: io.github.jhipster.config.jcache.BeanClassLoaderAwareJCacheRegionFactory
     data:
-        elasticsearch:
-            properties:
-                path:
-                    home: target/elasticsearch
+        jest:
+            uri: http://192.168.10.195:9200
     liquibase:
         contexts: dev
     mail:
@@ -110,11 +108,11 @@ jhipster:
         prometheus:
             enabled: false #expose metrics via prometheus
         logs: # Reports Dropwizard metrics in the logs
-            enabled: false
+            enabled: true
             report-frequency: 60 # in seconds
     logging:
         logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
-            enabled: false
+            enabled: true
             host: localhost
             port: 5000
             queue-size: 512

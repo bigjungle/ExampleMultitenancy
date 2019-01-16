@@ -7,6 +7,31 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entities",
+                "planInfoSdmSuffix": "Plan Info",
+                "planInfoStepSdmSuffix": "Plan Info Step",
+                "planInfoAtchSdmSuffix": "Plan Info Atch",
+                "planInfoStepAtchSdmSuffix": "Plan Info Step Atch",
+                "planInfoDataSdmSuffix": "Plan Info Data",
+                "planInfoStepDataSdmSuffix": "Plan Info Step Data",
+                "planInfoDataAtchSdmSuffix": "Plan Info Data Atch",
+                "planInfoStepDataAtchSdmSuffix": "Plan Info Step Data Atch",
+                "planInfoDataHisSdmSuffix": "Plan Info Data His",
+                "planInfoStepDataHisSdmSuffix": "Plan Info Step Data His",
+                "planInfoDataAtchHisSdmSuffix": "Plan Info Data Atch His",
+                "planInfoStepDataAtchHisSdmSuffix": "Plan Info Step Data Atch His",
+                "verifyRecSdmSuffix": "Verify Rec",
+                "paraTypeSdmSuffix": "Para Type",
+                "paraClassSdmSuffix": "Para Class",
+                "paraCatSdmSuffix": "Para Cat",
+                "paraStateSdmSuffix": "Para State",
+                "paraSourceSdmSuffix": "Para Source",
+                "paraPropSdmSuffix": "Para Prop",
+                "paraAttrSdmSuffix": "Para Attr",
+                "rmsUserSdmSuffix": "Rms User",
+                "rmsPersonSdmSuffix": "Rms Person",
+                "rmsDepSdmSuffix": "Rms Dep",
+                "rmsRoleSdmSuffix": "Rms Role",
+                "rmsNodeSdmSuffix": "Rms Node",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -29,6 +54,7 @@
                 "audits": "Audits",
                 "apidocs": "API",
                 "database": "Database",
+                "company-management": "Company Management",
                 "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
             },
             "language": "Language"
@@ -132,5 +158,6 @@
         "idexists": "A new {{ entityName }} cannot already have an ID",
         "idnull": "Invalid ID"
     },
-    "footer": "This is your footer"
+    "footer": "This is your footer",
+    "userManagementCompany": "Company"
 }

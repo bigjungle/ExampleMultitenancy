@@ -1,0 +1,218 @@
+{
+    "name": "PlanInfoStepDataAtch",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 1000
+        },
+        {
+            "fieldName": "storeDir",
+            "javadoc": "存储路径",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "storeName",
+            "javadoc": "存储名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "sortString",
+            "javadoc": "序号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "fileType",
+            "javadoc": "文件类型",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "deleteFlag",
+            "javadoc": "删除标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "storeType",
+            "javadoc": "存储类型",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "ver",
+            "javadoc": "版本",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "encryptedFlag",
+            "javadoc": "加密标志",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "encryptedType",
+            "javadoc": "加密类型",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "jsonString",
+            "javadoc": "json格式数据",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "remarks",
+            "javadoc": "备注",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "attachmentPath",
+            "javadoc": "附件路径",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "attachmentBlob",
+            "javadoc": "附件",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "attachmentName",
+            "javadoc": "附件名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "textBlob",
+            "javadoc": "文本附件",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imageBlob",
+            "javadoc": "图片附件",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "imageBlobName",
+            "javadoc": "附件名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "validType",
+            "javadoc": "有效类型",
+            "fieldType": "ValidType",
+            "fieldValues": "LONG,SCOPE"
+        },
+        {
+            "fieldName": "validBegin",
+            "javadoc": "生效开始时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validEnd",
+            "javadoc": "有效截止时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "insertTime",
+            "javadoc": "创建时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateTime",
+            "javadoc": "最后修改时间",
+            "fieldType": "Instant"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createdBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "planInfoStepAtch",
+            "otherEntityName": "planInfoStepAtch",
+            "otherEntityField": "name"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "planInfoStepData",
+            "otherEntityName": "planInfoStepData",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190115083422",
+    "javadoc": "step attachment 预案步骤数据附件表\n@author JungleYang",
+    "entityTableName": "plan_info_step_data_atch",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "sdmSuffix"
+}

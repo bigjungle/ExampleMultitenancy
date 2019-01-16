@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity RmsDep.
+    -->
+    <changeSet id="20190115083437-1" author="jhipster">
+        <createTable tableName="rms_dep" remarks="RmsDep 单位信息 @author JungleYang.">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="dep_name" type="varchar(256)" remarks="单位名称">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dep_type_id" type="varchar(256)" remarks="单位类型代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="parent_dep_id" type="varchar(256)" remarks="上级单位代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="repeal_flag" type="boolean" remarks="撤销标志">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="level_id" type="varchar(32)" remarks="等级代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dep_sort" type="varchar(10)" remarks="单位序号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="parent_dep_str" type="varchar(2560)" remarks="上级单位字符串">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="child_dep_str" type="varchar(3999)" remarks="子单位字符串">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dep_desc" type="varchar(256)" remarks="单位说明">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="tel" type="varchar(256)" remarks="电话">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fax" type="varchar(256)" remarks="传真">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="address" type="varchar(256)" remarks="地址">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="code" type="varchar(32)" remarks="代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="internet" type="varchar(256)" remarks="网站">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mail" type="varchar(256)" remarks="邮箱">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_01" type="varchar(256)" remarks="备用01">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_02" type="varchar(256)" remarks="备用02">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_03" type="varchar(256)" remarks="备用03">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_04" type="varchar(256)" remarks="备用04">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_05" type="varchar(256)" remarks="备用05">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_06" type="varchar(256)" remarks="备用06">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_07" type="varchar(256)" remarks="备用07">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_08" type="varchar(256)" remarks="备用08">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_09" type="varchar(256)" remarks="备用09">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_10" type="varchar(256)" remarks="备用10">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valid_type" type="varchar(255)" remarks="有效类型">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valid_begin" type="datetime" remarks="生效开始时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valid_end" type="datetime" remarks="有效截止时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="insert_time" type="datetime" remarks="创建时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="update_time" type="datetime" remarks="最后修改时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="verify_time" type="datetime" remarks="审核时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="serial_number" type="varchar(256)" remarks="编号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modified_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="verified_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="parent_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="rms_dep" columnName="valid_begin" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_dep" columnName="valid_end" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_dep" columnName="insert_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_dep" columnName="update_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_dep" columnName="verify_time" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

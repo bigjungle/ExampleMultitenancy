@@ -1,0 +1,83 @@
+{
+    "plandbApp": {
+        "planInfoStepDataHis": {
+            "home": {
+                "title": "Plan Info Step Data His",
+                "createLabel": "创建新 Plan Info Step Data His",
+                "createOrEditLabel": "创建或编辑 Plan Info Step Data His",
+                "search": "查找 Plan Info Step Data His"
+            },
+            "created": "Plan Info Step Data His {{ param }} 创建成功",
+            "updated": "Plan Info Step Data His {{ param }} 更新成功",
+            "deleted": "Plan Info Step Data His {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Plan Info Step Data His {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Plan Info Step Data His"
+            },
+            "name": "Name",
+            "sortString": "Sort String",
+            "descString": "Desc String",
+            "jsonString": "Json String",
+            "remarks": "Remarks",
+            "attachmentPath": "Attachment Path",
+            "attachmentBlob": "Attachment Blob",
+            "attachmentName": "Attachment Name",
+            "textBlob": "Text Blob",
+            "imageBlob": "Image Blob",
+            "imageBlobName": "Image Blob Name",
+            "usingFlag": "Using Flag",
+            "validType": "Valid Type",
+            "validBegin": "Valid Begin",
+            "validEnd": "Valid End",
+            "insertTime": "Insert Time",
+            "updateTime": "Update Time",
+            "verifyTime": "Verify Time",
+            "verifyNeed": "Verify Need",
+            "verifyOpinion": "Verify Opinion",
+            "viewCount": "View Count",
+            "viewPermission": "View Permission",
+            "viewPermPersion": "View Perm Persion",
+            "serialNumber": "Serial Number",
+            "versionNumber": "Version Number",
+            "stepOrder": "Step Order",
+            "createdBy": "Created By",
+            "createdDepBy": "Created Dep By",
+            "modifiedBy": "Modified By",
+            "modifiedDepBy": "Modified Dep By",
+            "verifiedBy": "Verified By",
+            "verifiedDepBy": "Verified Dep By",
+            "planInfoStep": "Plan Info Step",
+            "planInfoDataHis": "Plan Info Data His",
+            "help": {
+                "name": "预案库类型参数名称",
+                "sortString": "序号",
+                "descString": "描述",
+                "jsonString": "json格式数据",
+                "remarks": "备注",
+                "attachmentPath": "附件路径",
+                "attachmentBlob": "附件",
+                "attachmentName": "附件名称",
+                "textBlob": "文本附件",
+                "imageBlob": "图片附件",
+                "imageBlobName": "附件名称",
+                "usingFlag": "是否使用",
+                "validType": "有效类型",
+                "validBegin": "生效开始时间",
+                "validEnd": "有效截止时间",
+                "insertTime": "创建时间",
+                "updateTime": "最后修改时间",
+                "verifyTime": "审核时间",
+                "verifyNeed": "审核需要",
+                "verifyOpinion": "审核意见",
+                "viewCount": "查看次数",
+                "viewPermission": "查看权限类别",
+                "viewPermPersion": "查看权限人员Json",
+                "serialNumber": "编号",
+                "versionNumber": "版本号",
+                "stepOrder": "步骤顺序"
+            }
+        }
+    }
+}

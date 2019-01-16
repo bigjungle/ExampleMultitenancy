@@ -1,0 +1,73 @@
+{
+    "plandbApp": {
+        "planInfoDataAtch": {
+            "home": {
+                "title": "Plan Info Data Atches",
+                "createLabel": "创建新 Plan Info Data Atch",
+                "createOrEditLabel": "创建或编辑 Plan Info Data Atch",
+                "search": "查找 Plan Info Data Atch"
+            },
+            "created": "Plan Info Data Atch {{ param }} 创建成功",
+            "updated": "Plan Info Data Atch {{ param }} 更新成功",
+            "deleted": "Plan Info Data Atch {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Plan Info Data Atch {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Plan Info Data Atch"
+            },
+            "name": "Name",
+            "storeDir": "Store Dir",
+            "storeName": "Store Name",
+            "sortString": "Sort String",
+            "fileType": "File Type",
+            "deleteFlag": "Delete Flag",
+            "storeType": "Store Type",
+            "ver": "Ver",
+            "encryptedFlag": "Encrypted Flag",
+            "encryptedType": "Encrypted Type",
+            "jsonString": "Json String",
+            "remarks": "Remarks",
+            "attachmentPath": "Attachment Path",
+            "attachmentBlob": "Attachment Blob",
+            "attachmentName": "Attachment Name",
+            "textBlob": "Text Blob",
+            "imageBlob": "Image Blob",
+            "imageBlobName": "Image Blob Name",
+            "validType": "Valid Type",
+            "validBegin": "Valid Begin",
+            "validEnd": "Valid End",
+            "insertTime": "Insert Time",
+            "updateTime": "Update Time",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "planInfoAtch": "Plan Info Atch",
+            "planInfoData": "Plan Info Data",
+            "help": {
+                "name": "名称",
+                "storeDir": "存储路径",
+                "storeName": "存储名称",
+                "sortString": "序号",
+                "fileType": "文件类型",
+                "deleteFlag": "删除标志",
+                "storeType": "存储类型",
+                "ver": "版本",
+                "encryptedFlag": "加密标志",
+                "encryptedType": "加密类型",
+                "jsonString": "json格式数据",
+                "remarks": "备注",
+                "attachmentPath": "附件路径",
+                "attachmentBlob": "附件",
+                "attachmentName": "附件名称",
+                "textBlob": "文本附件",
+                "imageBlob": "图片附件",
+                "imageBlobName": "附件名称",
+                "validType": "有效类型",
+                "validBegin": "生效开始时间",
+                "validEnd": "有效截止时间",
+                "insertTime": "创建时间",
+                "updateTime": "最后修改时间"
+            }
+        }
+    }
+}

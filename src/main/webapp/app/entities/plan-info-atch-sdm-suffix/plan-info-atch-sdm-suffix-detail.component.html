@@ -1,0 +1,145 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="planInfoAtch">
+            <h2><span jhiTranslate="plandbApp.planInfoAtch.detail.title">Plan Info Atch</span> {{planInfoAtch.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.name" [ngbTooltip]="'plandbApp.planInfoAtch.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.storeDir" [ngbTooltip]="'plandbApp.planInfoAtch.help.storeDir' | translate">Store Dir</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.storeDir}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.storeName" [ngbTooltip]="'plandbApp.planInfoAtch.help.storeName' | translate">Store Name</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.storeName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.sortString" [ngbTooltip]="'plandbApp.planInfoAtch.help.sortString' | translate">Sort String</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.sortString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.fileType" [ngbTooltip]="'plandbApp.planInfoAtch.help.fileType' | translate">File Type</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.fileType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.deleteFlag" [ngbTooltip]="'plandbApp.planInfoAtch.help.deleteFlag' | translate">Delete Flag</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.deleteFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.storeType" [ngbTooltip]="'plandbApp.planInfoAtch.help.storeType' | translate">Store Type</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.storeType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.ver" [ngbTooltip]="'plandbApp.planInfoAtch.help.ver' | translate">Ver</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.ver}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.encryptedFlag" [ngbTooltip]="'plandbApp.planInfoAtch.help.encryptedFlag' | translate">Encrypted Flag</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.encryptedFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.encryptedType" [ngbTooltip]="'plandbApp.planInfoAtch.help.encryptedType' | translate">Encrypted Type</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.encryptedType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.jsonString" [ngbTooltip]="'plandbApp.planInfoAtch.help.jsonString' | translate">Json String</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.jsonString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.remarks" [ngbTooltip]="'plandbApp.planInfoAtch.help.remarks' | translate">Remarks</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.remarks}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.attachmentPath" [ngbTooltip]="'plandbApp.planInfoAtch.help.attachmentPath' | translate">Attachment Path</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.attachmentPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.attachmentBlob" [ngbTooltip]="'plandbApp.planInfoAtch.help.attachmentBlob' | translate">Attachment Blob</span></dt>
+                <dd>
+                    <div *ngIf="planInfoAtch.attachmentBlob">
+                        <a (click)="openFile(planInfoAtch.attachmentBlobContentType, planInfoAtch.attachmentBlob)" jhiTranslate="entity.action.open">open</a>
+                        {{planInfoAtch.attachmentBlobContentType}}, {{byteSize(planInfoAtch.attachmentBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.attachmentName" [ngbTooltip]="'plandbApp.planInfoAtch.help.attachmentName' | translate">Attachment Name</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.attachmentName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.textBlob" [ngbTooltip]="'plandbApp.planInfoAtch.help.textBlob' | translate">Text Blob</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.textBlob}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.imageBlob" [ngbTooltip]="'plandbApp.planInfoAtch.help.imageBlob' | translate">Image Blob</span></dt>
+                <dd>
+                    <div *ngIf="planInfoAtch.imageBlob">
+                        <a (click)="openFile(planInfoAtch.imageBlobContentType, planInfoAtch.imageBlob)">
+                            <img [src]="'data:' + planInfoAtch.imageBlobContentType + ';base64,' + planInfoAtch.imageBlob" style="max-width: 100%;" alt="planInfoAtch image"/>
+                        </a>
+                        {{planInfoAtch.imageBlobContentType}}, {{byteSize(planInfoAtch.imageBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.imageBlobName" [ngbTooltip]="'plandbApp.planInfoAtch.help.imageBlobName' | translate">Image Blob Name</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.imageBlobName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.validType" [ngbTooltip]="'plandbApp.planInfoAtch.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + planInfoAtch.validType}}">{{planInfoAtch.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.validBegin" [ngbTooltip]="'plandbApp.planInfoAtch.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.validEnd" [ngbTooltip]="'plandbApp.planInfoAtch.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.insertTime" [ngbTooltip]="'plandbApp.planInfoAtch.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.updateTime" [ngbTooltip]="'plandbApp.planInfoAtch.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.publishedTime" [ngbTooltip]="'plandbApp.planInfoAtch.help.publishedTime' | translate">Published Time</span></dt>
+                <dd>
+                    <span>{{planInfoAtch.publishedTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoAtch.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoAtch.createdById, 'view']">{{planInfoAtch.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoAtch.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoAtch.modifiedById, 'view']">{{planInfoAtch.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoAtch.planInfo">Plan Info</span></dt>
+                <dd>
+                    <div *ngIf="planInfoAtch.planInfoId">
+                        <a [routerLink]="['/plan-info-sdm-suffix', planInfoAtch.planInfoId, 'view']">{{planInfoAtch.planInfoName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plan-info-atch-sdm-suffix', planInfoAtch.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

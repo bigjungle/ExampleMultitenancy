@@ -1,0 +1,243 @@
+{
+    "name": "PlanInfoStep",
+    "fields": [
+        {
+            "fieldName": "name",
+            "javadoc": "预案库类型参数名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 64
+        },
+        {
+            "fieldName": "sortString",
+            "javadoc": "序号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "descString",
+            "javadoc": "描述",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "jsonString",
+            "javadoc": "json格式数据",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "remarks",
+            "javadoc": "备注",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "attachmentPath",
+            "javadoc": "附件路径",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "attachmentBlob",
+            "javadoc": "附件",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "attachmentName",
+            "javadoc": "附件名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "textBlob",
+            "javadoc": "文本附件",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "imageBlob",
+            "javadoc": "图片附件",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image"
+        },
+        {
+            "fieldName": "imageBlobName",
+            "javadoc": "附件名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "usingFlag",
+            "javadoc": "是否使用",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "validType",
+            "javadoc": "有效类型",
+            "fieldType": "ValidType",
+            "fieldValues": "LONG,SCOPE"
+        },
+        {
+            "fieldName": "validBegin",
+            "javadoc": "生效开始时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validEnd",
+            "javadoc": "有效截止时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "insertTime",
+            "javadoc": "创建时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateTime",
+            "javadoc": "最后修改时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "stepOrder",
+            "javadoc": "步骤顺序",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "publishedTime",
+            "javadoc": "发布时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "verifyTime",
+            "javadoc": "审核时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "verifyNeed",
+            "javadoc": "审核需要",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "verifyOpinion",
+            "javadoc": "审核意见",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "viewCount",
+            "javadoc": "查看次数",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "viewPermission",
+            "javadoc": "查看权限类别",
+            "fieldType": "ViewPermission",
+            "fieldValues": "PRIVATEVIEW,DEFAULTVIEW,PROTECTVIEW,PUBLICVIEW,CUSTOMVIEW"
+        },
+        {
+            "fieldName": "viewPermPersion",
+            "javadoc": "查看权限人员Json",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 4000
+        },
+        {
+            "fieldName": "serialNumber",
+            "javadoc": "编号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "versionNumber",
+            "javadoc": "版本号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createdBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createdDepBy",
+            "otherEntityName": "rmsDep",
+            "otherEntityField": "depName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modifiedDepBy",
+            "otherEntityName": "rmsDep",
+            "otherEntityField": "depName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "verifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "planInfo",
+            "otherEntityName": "planInfo",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190115083416",
+    "javadoc": "Plan Step 预案模板步骤表\n@author JungleYang",
+    "entityTableName": "plan_info_step",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "sdmSuffix"
+}

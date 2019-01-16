@@ -1,0 +1,455 @@
+{
+    "name": "RmsPerson",
+    "fields": [
+        {
+            "fieldName": "personName",
+            "javadoc": "人员名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "firstName",
+            "javadoc": "姓名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "jobId",
+            "javadoc": "工作代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "lastName",
+            "javadoc": "最后名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "otherName",
+            "javadoc": "其他名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "sex",
+            "javadoc": "性别",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "birthday",
+            "javadoc": "生日",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "pic",
+            "javadoc": "图片",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "icon",
+            "javadoc": "图标",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mobile",
+            "javadoc": "移动电话",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "depAddress",
+            "javadoc": "单位地址",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "depCode",
+            "javadoc": "单位代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "dutyId",
+            "javadoc": "职务代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "dimissionFlag",
+            "javadoc": "离职标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "headerFlag",
+            "javadoc": "正职领导标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "satrapFlag",
+            "javadoc": "业务负责人标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "leaderFlag",
+            "javadoc": "领导标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "postFlag1",
+            "javadoc": "岗位标志1",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "postFlag2",
+            "javadoc": "岗位标志2",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "postFlag3",
+            "javadoc": "岗位标志3",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "officeTel",
+            "javadoc": "办公电话",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "fax",
+            "javadoc": "传真",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mail1",
+            "javadoc": "邮箱1",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mail2",
+            "javadoc": "邮箱2",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "familyTel",
+            "javadoc": "家庭电话",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "familyAdd",
+            "javadoc": "家庭地址",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "familyCode",
+            "javadoc": "家庭代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 20
+        },
+        {
+            "fieldName": "personDesc",
+            "javadoc": "人员说明",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "idCode",
+            "javadoc": "代码代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "pop3",
+            "javadoc": "POP3",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "smtp",
+            "javadoc": "SMTP",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mailUsername",
+            "javadoc": "邮箱用户名",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mailPassword",
+            "javadoc": "邮箱密码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mailKeepFlag",
+            "javadoc": "邮箱保留标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "personSort",
+            "javadoc": "人员序号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "levelNum",
+            "javadoc": "等级号",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "personStateId",
+            "javadoc": "人员状态号码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 32
+        },
+        {
+            "fieldName": "by01",
+            "javadoc": "备用01",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by02",
+            "javadoc": "备用02",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by03",
+            "javadoc": "备用03",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by04",
+            "javadoc": "备用04",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by05",
+            "javadoc": "备用05",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by06",
+            "javadoc": "备用06",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by07",
+            "javadoc": "备用07",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by08",
+            "javadoc": "备用08",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by09",
+            "javadoc": "备用09",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by10",
+            "javadoc": "备用10",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "validType",
+            "javadoc": "有效类型",
+            "fieldType": "ValidType",
+            "fieldValues": "LONG,SCOPE"
+        },
+        {
+            "fieldName": "validBegin",
+            "javadoc": "生效开始时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validEnd",
+            "javadoc": "有效截止时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "insertTime",
+            "javadoc": "创建时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateTime",
+            "javadoc": "最后修改时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "verifyTime",
+            "javadoc": "审核时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "serialNumber",
+            "javadoc": "编号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createdBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "verifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        }
+    ],
+    "changelogDate": "20190115083436",
+    "javadoc": "RmsPerson 人员信息\n@author JungleYang.",
+    "entityTableName": "rms_person",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "sdmSuffix"
+}

@@ -1,0 +1,12 @@
+{
+    "plandbApp": {
+        "ViewPermission": {
+            "null": "",
+            "PRIVATEVIEW": "PRIVATEVIEW",
+            "DEFAULTVIEW": "DEFAULTVIEW",
+            "PROTECTVIEW": "PROTECTVIEW",
+            "PUBLICVIEW": "PUBLICVIEW",
+            "CUSTOMVIEW": "CUSTOMVIEW"
+        }
+    }
+}

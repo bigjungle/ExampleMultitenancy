@@ -1,0 +1,139 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.planInfoStepAtch.home.title">Plan Info Step Atches</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-plan-info-step-atch-sdm-suffix" [routerLink]="['/plan-info-step-atch-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.planInfoStepAtch.home.createLabel">
+            Create new Plan Info Step Atch
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.planInfoStepAtch.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="planInfoStepAtches">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="plandbApp.planInfoStepAtch.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="storeDir"><span jhiTranslate="plandbApp.planInfoStepAtch.storeDir">Store Dir</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="storeName"><span jhiTranslate="plandbApp.planInfoStepAtch.storeName">Store Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sortString"><span jhiTranslate="plandbApp.planInfoStepAtch.sortString">Sort String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fileType"><span jhiTranslate="plandbApp.planInfoStepAtch.fileType">File Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deleteFlag"><span jhiTranslate="plandbApp.planInfoStepAtch.deleteFlag">Delete Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="storeType"><span jhiTranslate="plandbApp.planInfoStepAtch.storeType">Store Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ver"><span jhiTranslate="plandbApp.planInfoStepAtch.ver">Ver</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="encryptedFlag"><span jhiTranslate="plandbApp.planInfoStepAtch.encryptedFlag">Encrypted Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="encryptedType"><span jhiTranslate="plandbApp.planInfoStepAtch.encryptedType">Encrypted Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="jsonString"><span jhiTranslate="plandbApp.planInfoStepAtch.jsonString">Json String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="plandbApp.planInfoStepAtch.remarks">Remarks</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentPath"><span jhiTranslate="plandbApp.planInfoStepAtch.attachmentPath">Attachment Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentBlob"><span jhiTranslate="plandbApp.planInfoStepAtch.attachmentBlob">Attachment Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentName"><span jhiTranslate="plandbApp.planInfoStepAtch.attachmentName">Attachment Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="textBlob"><span jhiTranslate="plandbApp.planInfoStepAtch.textBlob">Text Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlob"><span jhiTranslate="plandbApp.planInfoStepAtch.imageBlob">Image Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlobName"><span jhiTranslate="plandbApp.planInfoStepAtch.imageBlobName">Image Blob Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.planInfoStepAtch.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.planInfoStepAtch.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.planInfoStepAtch.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.planInfoStepAtch.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.planInfoStepAtch.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.planInfoStepAtch.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.planInfoStepAtch.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="planInfoStepName"><span jhiTranslate="plandbApp.planInfoStepAtch.planInfoStep">Plan Info Step</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let planInfoStepAtch of planInfoStepAtches ;trackBy: trackId">
+                <td><a [routerLink]="['/plan-info-step-atch-sdm-suffix', planInfoStepAtch.id, 'view' ]">{{planInfoStepAtch.id}}</a></td>
+                <td>{{planInfoStepAtch.name}}</td>
+                <td>{{planInfoStepAtch.storeDir}}</td>
+                <td>{{planInfoStepAtch.storeName}}</td>
+                <td>{{planInfoStepAtch.sortString}}</td>
+                <td>{{planInfoStepAtch.fileType}}</td>
+                <td>{{planInfoStepAtch.deleteFlag}}</td>
+                <td>{{planInfoStepAtch.storeType}}</td>
+                <td>{{planInfoStepAtch.ver}}</td>
+                <td>{{planInfoStepAtch.encryptedFlag}}</td>
+                <td>{{planInfoStepAtch.encryptedType}}</td>
+                <td>{{planInfoStepAtch.jsonString}}</td>
+                <td>{{planInfoStepAtch.remarks}}</td>
+                <td>{{planInfoStepAtch.attachmentPath}}</td>
+                <td>
+                    <a *ngIf="planInfoStepAtch.attachmentBlob" (click)="openFile(planInfoStepAtch.attachmentBlobContentType, planInfoStepAtch.attachmentBlob)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="planInfoStepAtch.attachmentBlob">{{planInfoStepAtch.attachmentBlobContentType}}, {{byteSize(planInfoStepAtch.attachmentBlob)}}</span>
+                </td>
+                <td>{{planInfoStepAtch.attachmentName}}</td>
+                <td>{{planInfoStepAtch.textBlob}}</td>
+                <td>
+                    <a *ngIf="planInfoStepAtch.imageBlob" (click)="openFile(planInfoStepAtch.imageBlobContentType, planInfoStepAtch.imageBlob)">
+                        <img [src]="'data:' + planInfoStepAtch.imageBlobContentType + ';base64,' + planInfoStepAtch.imageBlob" style="max-height: 30px;" alt="planInfoStepAtch image"/>
+                    </a>
+                    <span *ngIf="planInfoStepAtch.imageBlob">{{planInfoStepAtch.imageBlobContentType}}, {{byteSize(planInfoStepAtch.imageBlob)}}</span>
+                </td>
+                <td>{{planInfoStepAtch.imageBlobName}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + planInfoStepAtch.validType}}">{{planInfoStepAtch.validType}}</td>
+                <td>{{planInfoStepAtch.validBegin | date:'medium'}}</td>
+                <td>{{planInfoStepAtch.validEnd | date:'medium'}}</td>
+                <td>{{planInfoStepAtch.insertTime | date:'medium'}}</td>
+                <td>{{planInfoStepAtch.updateTime | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="planInfoStepAtch.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfoStepAtch.createdById , 'view' ]" >{{planInfoStepAtch.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfoStepAtch.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfoStepAtch.modifiedById , 'view' ]" >{{planInfoStepAtch.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfoStepAtch.planInfoStepId">
+                        <a [routerLink]="['../plan-info-step-sdm-suffix', planInfoStepAtch.planInfoStepId , 'view' ]" >{{planInfoStepAtch.planInfoStepName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/plan-info-step-atch-sdm-suffix', planInfoStepAtch.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/plan-info-step-atch-sdm-suffix', planInfoStepAtch.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'plan-info-step-atch-sdm-suffix/'+ planInfoStepAtch.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

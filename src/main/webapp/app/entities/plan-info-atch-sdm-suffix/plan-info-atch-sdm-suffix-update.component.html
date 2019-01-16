@@ -1,0 +1,290 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-plan-info-atch-sdm-suffix-heading" jhiTranslate="plandbApp.planInfoAtch.home.createOrEditLabel">Create or edit a Plan Info Atch</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!planInfoAtch.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="planInfoAtch.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.name" for="field_name" [ngbTooltip]="'plandbApp.planInfoAtch.help.name' | translate">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="planInfoAtch.name" required maxlength="1000"/>
+                    <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.name?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 1000 }">
+                        This field cannot be longer than 1000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.storeDir" for="field_storeDir" [ngbTooltip]="'plandbApp.planInfoAtch.help.storeDir' | translate">Store Dir</label>
+                    <input type="text" class="form-control" name="storeDir" id="field_storeDir"
+                        [(ngModel)]="planInfoAtch.storeDir" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.storeDir?.dirty && editForm.controls.storeDir?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.storeDir?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.storeName" for="field_storeName" [ngbTooltip]="'plandbApp.planInfoAtch.help.storeName' | translate">Store Name</label>
+                    <input type="text" class="form-control" name="storeName" id="field_storeName"
+                        [(ngModel)]="planInfoAtch.storeName" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.storeName?.dirty && editForm.controls.storeName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.storeName?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.sortString" for="field_sortString" [ngbTooltip]="'plandbApp.planInfoAtch.help.sortString' | translate">Sort String</label>
+                    <input type="text" class="form-control" name="sortString" id="field_sortString"
+                        [(ngModel)]="planInfoAtch.sortString" maxlength="10"/>
+                    <div [hidden]="!(editForm.controls.sortString?.dirty && editForm.controls.sortString?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.sortString?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.fileType" for="field_fileType" [ngbTooltip]="'plandbApp.planInfoAtch.help.fileType' | translate">File Type</label>
+                    <input type="text" class="form-control" name="fileType" id="field_fileType"
+                        [(ngModel)]="planInfoAtch.fileType" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.fileType?.dirty && editForm.controls.fileType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fileType?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.deleteFlag" for="field_deleteFlag" [ngbTooltip]="'plandbApp.planInfoAtch.help.deleteFlag' | translate">Delete Flag</label>
+                    <input type="checkbox" class="form-control" name="deleteFlag" id="field_deleteFlag"
+                        [(ngModel)]="planInfoAtch.deleteFlag" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.storeType" for="field_storeType" [ngbTooltip]="'plandbApp.planInfoAtch.help.storeType' | translate">Store Type</label>
+                    <input type="text" class="form-control" name="storeType" id="field_storeType"
+                        [(ngModel)]="planInfoAtch.storeType" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.storeType?.dirty && editForm.controls.storeType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.storeType?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.ver" for="field_ver" [ngbTooltip]="'plandbApp.planInfoAtch.help.ver' | translate">Ver</label>
+                    <input type="text" class="form-control" name="ver" id="field_ver"
+                        [(ngModel)]="planInfoAtch.ver" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.ver?.dirty && editForm.controls.ver?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.ver?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.encryptedFlag" for="field_encryptedFlag" [ngbTooltip]="'plandbApp.planInfoAtch.help.encryptedFlag' | translate">Encrypted Flag</label>
+                    <input type="text" class="form-control" name="encryptedFlag" id="field_encryptedFlag"
+                        [(ngModel)]="planInfoAtch.encryptedFlag" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.encryptedFlag?.dirty && editForm.controls.encryptedFlag?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.encryptedFlag?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.encryptedType" for="field_encryptedType" [ngbTooltip]="'plandbApp.planInfoAtch.help.encryptedType' | translate">Encrypted Type</label>
+                    <input type="text" class="form-control" name="encryptedType" id="field_encryptedType"
+                        [(ngModel)]="planInfoAtch.encryptedType" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.encryptedType?.dirty && editForm.controls.encryptedType?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.encryptedType?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.jsonString" for="field_jsonString" [ngbTooltip]="'plandbApp.planInfoAtch.help.jsonString' | translate">Json String</label>
+                    <input type="text" class="form-control" name="jsonString" id="field_jsonString"
+                        [(ngModel)]="planInfoAtch.jsonString" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.jsonString?.dirty && editForm.controls.jsonString?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.jsonString?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.remarks" for="field_remarks" [ngbTooltip]="'plandbApp.planInfoAtch.help.remarks' | translate">Remarks</label>
+                    <input type="text" class="form-control" name="remarks" id="field_remarks"
+                        [(ngModel)]="planInfoAtch.remarks" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.remarks?.dirty && editForm.controls.remarks?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.remarks?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.attachmentPath" for="field_attachmentPath" [ngbTooltip]="'plandbApp.planInfoAtch.help.attachmentPath' | translate">Attachment Path</label>
+                    <input type="text" class="form-control" name="attachmentPath" id="field_attachmentPath"
+                        [(ngModel)]="planInfoAtch.attachmentPath" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.attachmentPath?.dirty && editForm.controls.attachmentPath?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.attachmentPath?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.attachmentBlob" for="field_attachmentBlob" [ngbTooltip]="'plandbApp.planInfoAtch.help.attachmentBlob' | translate">Attachment Blob</label>
+                    <div>
+                        <div *ngIf="planInfoAtch.attachmentBlob" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(planInfoAtch.attachmentBlobContentType, planInfoAtch.attachmentBlob)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{planInfoAtch.attachmentBlobContentType}}, {{byteSize(planInfoAtch.attachmentBlob)}}</span>
+                            <button type="button" (click)="planInfoAtch.attachmentBlob=null;planInfoAtch.attachmentBlobContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_attachmentBlob" (change)="setFileData($event, planInfoAtch, 'attachmentBlob', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="attachmentBlob" id="field_attachmentBlob"
+                        [(ngModel)]="planInfoAtch.attachmentBlob" />
+                    <input type="hidden" class="form-control" name="attachmentBlobContentType" id="field_attachmentBlobContentType"
+                        [(ngModel)]="planInfoAtch.attachmentBlobContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.attachmentName" for="field_attachmentName" [ngbTooltip]="'plandbApp.planInfoAtch.help.attachmentName' | translate">Attachment Name</label>
+                    <input type="text" class="form-control" name="attachmentName" id="field_attachmentName"
+                        [(ngModel)]="planInfoAtch.attachmentName" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.attachmentName?.dirty && editForm.controls.attachmentName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.attachmentName?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.textBlob" for="field_textBlob" [ngbTooltip]="'plandbApp.planInfoAtch.help.textBlob' | translate">Text Blob</label>
+                    <textarea class="form-control" name="textBlob" id="field_textBlob"
+                        [(ngModel)]="planInfoAtch.textBlob" ></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.imageBlob" for="field_imageBlob" [ngbTooltip]="'plandbApp.planInfoAtch.help.imageBlob' | translate">Image Blob</label>
+                    <div>
+                        <img [src]="'data:' + planInfoAtch.imageBlobContentType + ';base64,' + planInfoAtch.imageBlob" style="max-height: 100px;" *ngIf="planInfoAtch.imageBlob" alt="planInfoAtch image"/>
+                        <div *ngIf="planInfoAtch.imageBlob" class="form-text text-danger clearfix">
+                            <span class="pull-left">{{planInfoAtch.imageBlobContentType}}, {{byteSize(planInfoAtch.imageBlob)}}</span>
+                            <button type="button" (click)="clearInputImage('imageBlob', 'imageBlobContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_imageBlob" (change)="setFileData($event, planInfoAtch, 'imageBlob', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="imageBlob" id="field_imageBlob"
+                        [(ngModel)]="planInfoAtch.imageBlob" />
+                    <input type="hidden" class="form-control" name="imageBlobContentType" id="field_imageBlobContentType"
+                        [(ngModel)]="planInfoAtch.imageBlobContentType" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.imageBlobName" for="field_imageBlobName" [ngbTooltip]="'plandbApp.planInfoAtch.help.imageBlobName' | translate">Image Blob Name</label>
+                    <input type="text" class="form-control" name="imageBlobName" id="field_imageBlobName"
+                        [(ngModel)]="planInfoAtch.imageBlobName" maxlength="4000"/>
+                    <div [hidden]="!(editForm.controls.imageBlobName?.dirty && editForm.controls.imageBlobName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.imageBlobName?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 4000 }">
+                        This field cannot be longer than 4000 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.validType" for="field_validType" [ngbTooltip]="'plandbApp.planInfoAtch.help.validType' | translate">Valid Type</label>
+                    <select class="form-control" name="validType" [(ngModel)]="planInfoAtch.validType" id="field_validType" >
+                        <option value="LONG">{{'plandbApp.ValidType.LONG' | translate}}</option>
+                        <option value="SCOPE">{{'plandbApp.ValidType.SCOPE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.validBegin" for="field_validBegin" [ngbTooltip]="'plandbApp.planInfoAtch.help.validBegin' | translate">Valid Begin</label>
+                    <div class="d-flex">
+                        <input id="field_validBegin" type="datetime-local" class="form-control" name="validBegin" [(ngModel)]="validBegin"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.validEnd" for="field_validEnd" [ngbTooltip]="'plandbApp.planInfoAtch.help.validEnd' | translate">Valid End</label>
+                    <div class="d-flex">
+                        <input id="field_validEnd" type="datetime-local" class="form-control" name="validEnd" [(ngModel)]="validEnd"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.insertTime" for="field_insertTime" [ngbTooltip]="'plandbApp.planInfoAtch.help.insertTime' | translate">Insert Time</label>
+                    <div class="d-flex">
+                        <input id="field_insertTime" type="datetime-local" class="form-control" name="insertTime" [(ngModel)]="insertTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.updateTime" for="field_updateTime" [ngbTooltip]="'plandbApp.planInfoAtch.help.updateTime' | translate">Update Time</label>
+                    <div class="d-flex">
+                        <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="updateTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.publishedTime" for="field_publishedTime" [ngbTooltip]="'plandbApp.planInfoAtch.help.publishedTime' | translate">Published Time</label>
+                    <div class="d-flex">
+                        <input id="field_publishedTime" type="datetime-local" class="form-control" name="publishedTime" [(ngModel)]="publishedTime"
+                        />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.createdBy" for="field_createdBy">Created By</label>
+                    <select class="form-control" id="field_createdBy" name="createdBy" [(ngModel)]="planInfoAtch.createdById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.modifiedBy" for="field_modifiedBy">Modified By</label>
+                    <select class="form-control" id="field_modifiedBy" name="modifiedBy" [(ngModel)]="planInfoAtch.modifiedById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.planInfoAtch.planInfo" for="field_planInfo">Plan Info</label>
+                    <select class="form-control" id="field_planInfo" name="planInfo" [(ngModel)]="planInfoAtch.planInfoId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="planInfoOption.id" *ngFor="let planInfoOption of planinfos; trackBy: trackPlanInfoById">{{planInfoOption.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

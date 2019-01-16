@@ -12,6 +12,10 @@ import {
     UserMgmtDetailComponent,
     UserMgmtUpdateComponent,
     UserMgmtDeleteDialogComponent,
+    CompanyMgmtComponent,
+    CompanyMgmtDetailComponent,
+    CompanyMgmtUpdateComponent,
+    CompanyMgmtDeleteDialogComponent,
     LogsComponent,
     JhiMetricsMonitoringModalComponent,
     JhiMetricsMonitoringComponent,
@@ -33,6 +37,10 @@ import {
         UserMgmtDetailComponent,
         UserMgmtUpdateComponent,
         UserMgmtDeleteDialogComponent,
+        CompanyMgmtComponent,
+        CompanyMgmtDetailComponent,
+        CompanyMgmtUpdateComponent,
+        CompanyMgmtDeleteDialogComponent,
         LogsComponent,
         JhiConfigurationComponent,
         JhiHealthCheckComponent,
@@ -42,7 +50,12 @@ import {
         JhiMetricsMonitoringModalComponent
     ],
     providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
-    entryComponents: [UserMgmtDeleteDialogComponent, JhiHealthModalComponent, JhiMetricsMonitoringModalComponent],
+    entryComponents: [
+        UserMgmtDeleteDialogComponent,
+        JhiHealthModalComponent,
+        JhiMetricsMonitoringModalComponent,
+        CompanyMgmtDeleteDialogComponent
+    ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class PlandbAdminModule {

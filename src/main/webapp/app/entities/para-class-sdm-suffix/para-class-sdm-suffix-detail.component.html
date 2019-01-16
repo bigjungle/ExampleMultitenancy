@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="paraClass">
+            <h2><span jhiTranslate="plandbApp.paraClass.detail.title">Para Class</span> {{paraClass.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.paraClass.name" [ngbTooltip]="'plandbApp.paraClass.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{paraClass.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.serialNumber" [ngbTooltip]="'plandbApp.paraClass.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{paraClass.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.sortString" [ngbTooltip]="'plandbApp.paraClass.help.sortString' | translate">Sort String</span></dt>
+                <dd>
+                    <span>{{paraClass.sortString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.descString" [ngbTooltip]="'plandbApp.paraClass.help.descString' | translate">Desc String</span></dt>
+                <dd>
+                    <span>{{paraClass.descString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.imageBlob" [ngbTooltip]="'plandbApp.paraClass.help.imageBlob' | translate">Image Blob</span></dt>
+                <dd>
+                    <div *ngIf="paraClass.imageBlob">
+                        <a (click)="openFile(paraClass.imageBlobContentType, paraClass.imageBlob)">
+                            <img [src]="'data:' + paraClass.imageBlobContentType + ';base64,' + paraClass.imageBlob" style="max-width: 100%;" alt="paraClass image"/>
+                        </a>
+                        {{paraClass.imageBlobContentType}}, {{byteSize(paraClass.imageBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.imageBlobName" [ngbTooltip]="'plandbApp.paraClass.help.imageBlobName' | translate">Image Blob Name</span></dt>
+                <dd>
+                    <span>{{paraClass.imageBlobName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.usingFlag" [ngbTooltip]="'plandbApp.paraClass.help.usingFlag' | translate">Using Flag</span></dt>
+                <dd>
+                    <span>{{paraClass.usingFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.remarks" [ngbTooltip]="'plandbApp.paraClass.help.remarks' | translate">Remarks</span></dt>
+                <dd>
+                    <span>{{paraClass.remarks}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.validType" [ngbTooltip]="'plandbApp.paraClass.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + paraClass.validType}}">{{paraClass.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.validBegin" [ngbTooltip]="'plandbApp.paraClass.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{paraClass.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.validEnd" [ngbTooltip]="'plandbApp.paraClass.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{paraClass.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.insertTime" [ngbTooltip]="'plandbApp.paraClass.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{paraClass.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.updateTime" [ngbTooltip]="'plandbApp.paraClass.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{paraClass.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.verifyTime" [ngbTooltip]="'plandbApp.paraClass.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{paraClass.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="paraClass.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', paraClass.createdById, 'view']">{{paraClass.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="paraClass.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', paraClass.modifiedById, 'view']">{{paraClass.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="paraClass.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', paraClass.verifiedById, 'view']">{{paraClass.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.paraClass.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="paraClass.parentId">
+                        <a [routerLink]="['/para-class-sdm-suffix', paraClass.parentId, 'view']">{{paraClass.parentName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/para-class-sdm-suffix', paraClass.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

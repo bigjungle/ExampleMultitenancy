@@ -38,6 +38,37 @@ public class CacheConfiguration {
             cm.createCache(com.aerothinker.plandb.domain.User.class.getName(), jcacheConfiguration);
             cm.createCache(com.aerothinker.plandb.domain.Authority.class.getName(), jcacheConfiguration);
             cm.createCache(com.aerothinker.plandb.domain.User.class.getName() + ".authorities", jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.Company.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.Company.class.getName() + ".users", jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfo.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoStep.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoAtch.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoStepAtch.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoData.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoStepData.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoDataAtch.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoStepDataAtch.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoDataHis.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoStepDataHis.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoDataAtchHis.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.PlanInfoStepDataAtchHis.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.VerifyRec.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaType.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaClass.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaCat.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaState.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaSource.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaProp.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.ParaAttr.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsUser.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsUser.class.getName() + ".rmsRoles", jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsPerson.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsDep.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsRole.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsRole.class.getName() + ".rmsNodes", jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsRole.class.getName() + ".rmsUsers", jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsNode.class.getName(), jcacheConfiguration);
+            cm.createCache(com.aerothinker.plandb.domain.RmsNode.class.getName() + ".rmsRoles", jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

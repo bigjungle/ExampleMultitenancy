@@ -1,0 +1,183 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="planInfoStepDataHis">
+            <h2><span jhiTranslate="plandbApp.planInfoStepDataHis.detail.title">Plan Info Step Data His</span> {{planInfoStepDataHis.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.name" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.sortString" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.sortString' | translate">Sort String</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.sortString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.descString" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.descString' | translate">Desc String</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.descString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.jsonString" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.jsonString' | translate">Json String</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.jsonString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.remarks" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.remarks' | translate">Remarks</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.remarks}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.attachmentPath" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.attachmentPath' | translate">Attachment Path</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.attachmentPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.attachmentBlob" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.attachmentBlob' | translate">Attachment Blob</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.attachmentBlob">
+                        <a (click)="openFile(planInfoStepDataHis.attachmentBlobContentType, planInfoStepDataHis.attachmentBlob)" jhiTranslate="entity.action.open">open</a>
+                        {{planInfoStepDataHis.attachmentBlobContentType}}, {{byteSize(planInfoStepDataHis.attachmentBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.attachmentName" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.attachmentName' | translate">Attachment Name</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.attachmentName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.textBlob" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.textBlob' | translate">Text Blob</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.textBlob}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.imageBlob" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.imageBlob' | translate">Image Blob</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.imageBlob">
+                        <a (click)="openFile(planInfoStepDataHis.imageBlobContentType, planInfoStepDataHis.imageBlob)">
+                            <img [src]="'data:' + planInfoStepDataHis.imageBlobContentType + ';base64,' + planInfoStepDataHis.imageBlob" style="max-width: 100%;" alt="planInfoStepDataHis image"/>
+                        </a>
+                        {{planInfoStepDataHis.imageBlobContentType}}, {{byteSize(planInfoStepDataHis.imageBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.imageBlobName" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.imageBlobName' | translate">Image Blob Name</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.imageBlobName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.usingFlag" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.usingFlag' | translate">Using Flag</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.usingFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.validType" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + planInfoStepDataHis.validType}}">{{planInfoStepDataHis.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.validBegin" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.validEnd" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.insertTime" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.updateTime" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.verifyTime" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.verifyNeed" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.verifyNeed' | translate">Verify Need</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.verifyNeed}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.verifyOpinion" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.verifyOpinion' | translate">Verify Opinion</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.verifyOpinion}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.viewCount" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.viewCount' | translate">View Count</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.viewCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.viewPermission" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.viewPermission' | translate">View Permission</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ViewPermission.' + planInfoStepDataHis.viewPermission}}">{{planInfoStepDataHis.viewPermission}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.viewPermPersion" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.viewPermPersion' | translate">View Perm Persion</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.viewPermPersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.serialNumber" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.versionNumber" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.versionNumber' | translate">Version Number</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.versionNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.stepOrder" [ngbTooltip]="'plandbApp.planInfoStepDataHis.help.stepOrder' | translate">Step Order</span></dt>
+                <dd>
+                    <span>{{planInfoStepDataHis.stepOrder}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoStepDataHis.createdById, 'view']">{{planInfoStepDataHis.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.createdDepBy">Created Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.createdDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoStepDataHis.createdDepById, 'view']">{{planInfoStepDataHis.createdDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoStepDataHis.modifiedById, 'view']">{{planInfoStepDataHis.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.modifiedDepBy">Modified Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.modifiedDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoStepDataHis.modifiedDepById, 'view']">{{planInfoStepDataHis.modifiedDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoStepDataHis.verifiedById, 'view']">{{planInfoStepDataHis.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.verifiedDepBy">Verified Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.verifiedDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoStepDataHis.verifiedDepById, 'view']">{{planInfoStepDataHis.verifiedDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.planInfoStep">Plan Info Step</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.planInfoStepId">
+                        <a [routerLink]="['/plan-info-step-sdm-suffix', planInfoStepDataHis.planInfoStepId, 'view']">{{planInfoStepDataHis.planInfoStepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoStepDataHis.planInfoDataHis">Plan Info Data His</span></dt>
+                <dd>
+                    <div *ngIf="planInfoStepDataHis.planInfoDataHisId">
+                        <a [routerLink]="['/plan-info-data-his-sdm-suffix', planInfoStepDataHis.planInfoDataHisId, 'view']">{{planInfoStepDataHis.planInfoDataHisName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plan-info-step-data-his-sdm-suffix', planInfoStepDataHis.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

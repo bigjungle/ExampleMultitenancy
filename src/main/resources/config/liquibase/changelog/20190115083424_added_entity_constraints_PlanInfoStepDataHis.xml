@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity PlanInfoStepDataHis.
+    -->
+    <changeSet id="20190115083424-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="created_dep_by_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_created_dep_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_dep"/>
+
+        <addForeignKeyConstraint baseColumnNames="modified_by_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_modified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="modified_dep_by_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_modified_dep_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_dep"/>
+
+        <addForeignKeyConstraint baseColumnNames="verified_by_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_verified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="verified_dep_by_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_verified_dep_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_dep"/>
+
+        <addForeignKeyConstraint baseColumnNames="plan_info_step_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_plan_info_step_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="plan_info_step"/>
+
+        <addForeignKeyConstraint baseColumnNames="plan_info_data_his_id"
+                                 baseTableName="plan_info_step_data_his"
+                                 constraintName="fk_plan_info_step_data_his_plan_info_data_his_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="plan_info_data_his"/>
+
+    </changeSet>
+</databaseChangeLog>

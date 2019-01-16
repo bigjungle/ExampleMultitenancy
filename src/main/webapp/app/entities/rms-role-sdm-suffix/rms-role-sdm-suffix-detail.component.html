@@ -1,0 +1,114 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rmsRole">
+            <h2><span jhiTranslate="plandbApp.rmsRole.detail.title">Rms Role</span> {{rmsRole.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.rmsRole.name" [ngbTooltip]="'plandbApp.rmsRole.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{rmsRole.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.serialNumber" [ngbTooltip]="'plandbApp.rmsRole.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{rmsRole.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.sortString" [ngbTooltip]="'plandbApp.rmsRole.help.sortString' | translate">Sort String</span></dt>
+                <dd>
+                    <span>{{rmsRole.sortString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.descString" [ngbTooltip]="'plandbApp.rmsRole.help.descString' | translate">Desc String</span></dt>
+                <dd>
+                    <span>{{rmsRole.descString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.imageBlob" [ngbTooltip]="'plandbApp.rmsRole.help.imageBlob' | translate">Image Blob</span></dt>
+                <dd>
+                    <div *ngIf="rmsRole.imageBlob">
+                        <a (click)="openFile(rmsRole.imageBlobContentType, rmsRole.imageBlob)">
+                            <img [src]="'data:' + rmsRole.imageBlobContentType + ';base64,' + rmsRole.imageBlob" style="max-width: 100%;" alt="rmsRole image"/>
+                        </a>
+                        {{rmsRole.imageBlobContentType}}, {{byteSize(rmsRole.imageBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.imageBlobName" [ngbTooltip]="'plandbApp.rmsRole.help.imageBlobName' | translate">Image Blob Name</span></dt>
+                <dd>
+                    <span>{{rmsRole.imageBlobName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.usingFlag" [ngbTooltip]="'plandbApp.rmsRole.help.usingFlag' | translate">Using Flag</span></dt>
+                <dd>
+                    <span>{{rmsRole.usingFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.remarks" [ngbTooltip]="'plandbApp.rmsRole.help.remarks' | translate">Remarks</span></dt>
+                <dd>
+                    <span>{{rmsRole.remarks}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.validType" [ngbTooltip]="'plandbApp.rmsRole.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + rmsRole.validType}}">{{rmsRole.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.validBegin" [ngbTooltip]="'plandbApp.rmsRole.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{rmsRole.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.validEnd" [ngbTooltip]="'plandbApp.rmsRole.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{rmsRole.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.insertTime" [ngbTooltip]="'plandbApp.rmsRole.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{rmsRole.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.updateTime" [ngbTooltip]="'plandbApp.rmsRole.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{rmsRole.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.verifyTime" [ngbTooltip]="'plandbApp.rmsRole.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{rmsRole.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="rmsRole.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsRole.createdById, 'view']">{{rmsRole.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsRole.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsRole.modifiedById, 'view']">{{rmsRole.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsRole.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsRole.verifiedById, 'view']">{{rmsRole.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="rmsRole.parentId">
+                        <a [routerLink]="['/rms-role-sdm-suffix', rmsRole.parentId, 'view']">{{rmsRole.parentName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsRole.rmsNode">Rms Node</span></dt>
+                <dd>
+                    <span *ngFor="let rmsNode of rmsRole.rmsNodes; let last = last">
+                        <a [routerLink]="['/rms-node-sdm-suffix', rmsNode?.id, 'view' ]">{{rmsNode.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rms-role-sdm-suffix', rmsRole.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

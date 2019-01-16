@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity ParaState.
+    -->
+    <changeSet id="20190115083431-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="para_state"
+                                 constraintName="fk_para_state_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="modified_by_id"
+                                 baseTableName="para_state"
+                                 constraintName="fk_para_state_modified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="verified_by_id"
+                                 baseTableName="para_state"
+                                 constraintName="fk_para_state_verified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="para_state"
+                                 constraintName="fk_para_state_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="para_state"/>
+
+    </changeSet>
+</databaseChangeLog>

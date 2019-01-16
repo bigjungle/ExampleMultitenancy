@@ -1,0 +1,275 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="planInfoData">
+            <h2><span jhiTranslate="plandbApp.planInfoData.detail.title">Plan Info Data</span> {{planInfoData.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.planInfoData.name" [ngbTooltip]="'plandbApp.planInfoData.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{planInfoData.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.sortString" [ngbTooltip]="'plandbApp.planInfoData.help.sortString' | translate">Sort String</span></dt>
+                <dd>
+                    <span>{{planInfoData.sortString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.descString" [ngbTooltip]="'plandbApp.planInfoData.help.descString' | translate">Desc String</span></dt>
+                <dd>
+                    <span>{{planInfoData.descString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.jsonString" [ngbTooltip]="'plandbApp.planInfoData.help.jsonString' | translate">Json String</span></dt>
+                <dd>
+                    <span>{{planInfoData.jsonString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.remarks" [ngbTooltip]="'plandbApp.planInfoData.help.remarks' | translate">Remarks</span></dt>
+                <dd>
+                    <span>{{planInfoData.remarks}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.refEvent" [ngbTooltip]="'plandbApp.planInfoData.help.refEvent' | translate">Ref Event</span></dt>
+                <dd>
+                    <span>{{planInfoData.refEvent}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.attachmentPath" [ngbTooltip]="'plandbApp.planInfoData.help.attachmentPath' | translate">Attachment Path</span></dt>
+                <dd>
+                    <span>{{planInfoData.attachmentPath}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.attachmentBlob" [ngbTooltip]="'plandbApp.planInfoData.help.attachmentBlob' | translate">Attachment Blob</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.attachmentBlob">
+                        <a (click)="openFile(planInfoData.attachmentBlobContentType, planInfoData.attachmentBlob)" jhiTranslate="entity.action.open">open</a>
+                        {{planInfoData.attachmentBlobContentType}}, {{byteSize(planInfoData.attachmentBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.attachmentName" [ngbTooltip]="'plandbApp.planInfoData.help.attachmentName' | translate">Attachment Name</span></dt>
+                <dd>
+                    <span>{{planInfoData.attachmentName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.textBlob" [ngbTooltip]="'plandbApp.planInfoData.help.textBlob' | translate">Text Blob</span></dt>
+                <dd>
+                    <span>{{planInfoData.textBlob}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.imageBlob" [ngbTooltip]="'plandbApp.planInfoData.help.imageBlob' | translate">Image Blob</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.imageBlob">
+                        <a (click)="openFile(planInfoData.imageBlobContentType, planInfoData.imageBlob)">
+                            <img [src]="'data:' + planInfoData.imageBlobContentType + ';base64,' + planInfoData.imageBlob" style="max-width: 100%;" alt="planInfoData image"/>
+                        </a>
+                        {{planInfoData.imageBlobContentType}}, {{byteSize(planInfoData.imageBlob)}}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.imageBlobName" [ngbTooltip]="'plandbApp.planInfoData.help.imageBlobName' | translate">Image Blob Name</span></dt>
+                <dd>
+                    <span>{{planInfoData.imageBlobName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.usingFlag" [ngbTooltip]="'plandbApp.planInfoData.help.usingFlag' | translate">Using Flag</span></dt>
+                <dd>
+                    <span>{{planInfoData.usingFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.validType" [ngbTooltip]="'plandbApp.planInfoData.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + planInfoData.validType}}">{{planInfoData.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.validBegin" [ngbTooltip]="'plandbApp.planInfoData.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{planInfoData.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.validEnd" [ngbTooltip]="'plandbApp.planInfoData.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{planInfoData.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.insertTime" [ngbTooltip]="'plandbApp.planInfoData.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{planInfoData.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.updateTime" [ngbTooltip]="'plandbApp.planInfoData.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{planInfoData.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.verifyTime" [ngbTooltip]="'plandbApp.planInfoData.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{planInfoData.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.verifyNeed" [ngbTooltip]="'plandbApp.planInfoData.help.verifyNeed' | translate">Verify Need</span></dt>
+                <dd>
+                    <span>{{planInfoData.verifyNeed}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.verifyOpinion" [ngbTooltip]="'plandbApp.planInfoData.help.verifyOpinion' | translate">Verify Opinion</span></dt>
+                <dd>
+                    <span>{{planInfoData.verifyOpinion}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.viewCount" [ngbTooltip]="'plandbApp.planInfoData.help.viewCount' | translate">View Count</span></dt>
+                <dd>
+                    <span>{{planInfoData.viewCount}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.viewPermission" [ngbTooltip]="'plandbApp.planInfoData.help.viewPermission' | translate">View Permission</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ViewPermission.' + planInfoData.viewPermission}}">{{planInfoData.viewPermission}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.viewPermPersion" [ngbTooltip]="'plandbApp.planInfoData.help.viewPermPersion' | translate">View Perm Persion</span></dt>
+                <dd>
+                    <span>{{planInfoData.viewPermPersion}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.serialNumber" [ngbTooltip]="'plandbApp.planInfoData.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{planInfoData.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.versionNumber" [ngbTooltip]="'plandbApp.planInfoData.help.versionNumber' | translate">Version Number</span></dt>
+                <dd>
+                    <span>{{planInfoData.versionNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraSourceString" [ngbTooltip]="'plandbApp.planInfoData.help.paraSourceString' | translate">Para Source String</span></dt>
+                <dd>
+                    <span>{{planInfoData.paraSourceString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.featureKeyword" [ngbTooltip]="'plandbApp.planInfoData.help.featureKeyword' | translate">Feature Keyword</span></dt>
+                <dd>
+                    <span>{{planInfoData.featureKeyword}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.suggestion" [ngbTooltip]="'plandbApp.planInfoData.help.suggestion' | translate">Suggestion</span></dt>
+                <dd>
+                    <span>{{planInfoData.suggestion}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.releaseScope" [ngbTooltip]="'plandbApp.planInfoData.help.releaseScope' | translate">Release Scope</span></dt>
+                <dd>
+                    <span>{{planInfoData.releaseScope}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.currentStepOrder" [ngbTooltip]="'plandbApp.planInfoData.help.currentStepOrder' | translate">Current Step Order</span></dt>
+                <dd>
+                    <span>{{planInfoData.currentStepOrder}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.verifyRec">Verify Rec</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.verifyRecId">
+                        <a [routerLink]="['/verify-rec-sdm-suffix', planInfoData.verifyRecId, 'view']">{{planInfoData.verifyRecName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraType">Para Type</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraTypeId">
+                        <a [routerLink]="['/para-type-sdm-suffix', planInfoData.paraTypeId, 'view']">{{planInfoData.paraTypeName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraClass">Para Class</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraClassId">
+                        <a [routerLink]="['/para-class-sdm-suffix', planInfoData.paraClassId, 'view']">{{planInfoData.paraClassName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraCat">Para Cat</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraCatId">
+                        <a [routerLink]="['/para-cat-sdm-suffix', planInfoData.paraCatId, 'view']">{{planInfoData.paraCatName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraState">Para State</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraStateId">
+                        <a [routerLink]="['/para-state-sdm-suffix', planInfoData.paraStateId, 'view']">{{planInfoData.paraStateName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraSource">Para Source</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraSourceId">
+                        <a [routerLink]="['/para-source-sdm-suffix', planInfoData.paraSourceId, 'view']">{{planInfoData.paraSourceName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraAttr">Para Attr</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraAttrId">
+                        <a [routerLink]="['/para-attr-sdm-suffix', planInfoData.paraAttrId, 'view']">{{planInfoData.paraAttrName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.paraProp">Para Prop</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.paraPropId">
+                        <a [routerLink]="['/para-prop-sdm-suffix', planInfoData.paraPropId, 'view']">{{planInfoData.paraPropName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoData.createdById, 'view']">{{planInfoData.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.createdDepBy">Created Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.createdDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoData.createdDepById, 'view']">{{planInfoData.createdDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.ownerBy">Owner By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.ownerById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoData.ownerById, 'view']">{{planInfoData.ownerByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.ownerDepBy">Owner Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.ownerDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoData.ownerDepById, 'view']">{{planInfoData.ownerDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoData.modifiedById, 'view']">{{planInfoData.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.modifiedDepBy">Modified Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.modifiedDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoData.modifiedDepById, 'view']">{{planInfoData.modifiedDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoData.verifiedById, 'view']">{{planInfoData.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.verifiedDepBy">Verified Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.verifiedDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoData.verifiedDepById, 'view']">{{planInfoData.verifiedDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.publishedBy">Published By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.publishedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', planInfoData.publishedById, 'view']">{{planInfoData.publishedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.publishedDepBy">Published Dep By</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.publishedDepById">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', planInfoData.publishedDepById, 'view']">{{planInfoData.publishedDepByDepName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.parentId">
+                        <a [routerLink]="['/plan-info-data-sdm-suffix', planInfoData.parentId, 'view']">{{planInfoData.parentName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.planInfoData.planInfo">Plan Info</span></dt>
+                <dd>
+                    <div *ngIf="planInfoData.planInfoId">
+                        <a [routerLink]="['/plan-info-sdm-suffix', planInfoData.planInfoId, 'view']">{{planInfoData.planInfoName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/plan-info-data-sdm-suffix', planInfoData.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

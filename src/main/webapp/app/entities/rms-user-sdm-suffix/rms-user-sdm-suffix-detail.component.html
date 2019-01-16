@@ -1,0 +1,139 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rmsUser">
+            <h2><span jhiTranslate="plandbApp.rmsUser.detail.title">Rms User</span> {{rmsUser.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.rmsUser.userName" [ngbTooltip]="'plandbApp.rmsUser.help.userName' | translate">User Name</span></dt>
+                <dd>
+                    <span>{{rmsUser.userName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.personId" [ngbTooltip]="'plandbApp.rmsUser.help.personId' | translate">Person Id</span></dt>
+                <dd>
+                    <span>{{rmsUser.personId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.userPassword" [ngbTooltip]="'plandbApp.rmsUser.help.userPassword' | translate">User Password</span></dt>
+                <dd>
+                    <span>{{rmsUser.userPassword}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.processPassword" [ngbTooltip]="'plandbApp.rmsUser.help.processPassword' | translate">Process Password</span></dt>
+                <dd>
+                    <span>{{rmsUser.processPassword}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.userSort" [ngbTooltip]="'plandbApp.rmsUser.help.userSort' | translate">User Sort</span></dt>
+                <dd>
+                    <span>{{rmsUser.userSort}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.userDesc" [ngbTooltip]="'plandbApp.rmsUser.help.userDesc' | translate">User Desc</span></dt>
+                <dd>
+                    <span>{{rmsUser.userDesc}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.userPasswordValiInstantTimes" [ngbTooltip]="'plandbApp.rmsUser.help.userPasswordValiInstantTimes' | translate">User Password Vali Instant Times</span></dt>
+                <dd>
+                    <span>{{rmsUser.userPasswordValiInstantTimes}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.userPasswordLockFlag" [ngbTooltip]="'plandbApp.rmsUser.help.userPasswordLockFlag' | translate">User Password Lock Flag</span></dt>
+                <dd>
+                    <span>{{rmsUser.userPasswordLockFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.procPasswordValiInstantTimes" [ngbTooltip]="'plandbApp.rmsUser.help.procPasswordValiInstantTimes' | translate">Proc Password Vali Instant Times</span></dt>
+                <dd>
+                    <span>{{rmsUser.procPasswordValiInstantTimes}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.procPasswordLockFlag" [ngbTooltip]="'plandbApp.rmsUser.help.procPasswordLockFlag' | translate">Proc Password Lock Flag</span></dt>
+                <dd>
+                    <span>{{rmsUser.procPasswordLockFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.userProp" [ngbTooltip]="'plandbApp.rmsUser.help.userProp' | translate">User Prop</span></dt>
+                <dd>
+                    <span>{{rmsUser.userProp}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.by01" [ngbTooltip]="'plandbApp.rmsUser.help.by01' | translate">By 01</span></dt>
+                <dd>
+                    <span>{{rmsUser.by01}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.by02" [ngbTooltip]="'plandbApp.rmsUser.help.by02' | translate">By 02</span></dt>
+                <dd>
+                    <span>{{rmsUser.by02}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.by03" [ngbTooltip]="'plandbApp.rmsUser.help.by03' | translate">By 03</span></dt>
+                <dd>
+                    <span>{{rmsUser.by03}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.by04" [ngbTooltip]="'plandbApp.rmsUser.help.by04' | translate">By 04</span></dt>
+                <dd>
+                    <span>{{rmsUser.by04}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.by05" [ngbTooltip]="'plandbApp.rmsUser.help.by05' | translate">By 05</span></dt>
+                <dd>
+                    <span>{{rmsUser.by05}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.validType" [ngbTooltip]="'plandbApp.rmsUser.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + rmsUser.validType}}">{{rmsUser.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.validBegin" [ngbTooltip]="'plandbApp.rmsUser.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{rmsUser.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.validEnd" [ngbTooltip]="'plandbApp.rmsUser.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{rmsUser.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.insertTime" [ngbTooltip]="'plandbApp.rmsUser.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{rmsUser.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.updateTime" [ngbTooltip]="'plandbApp.rmsUser.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{rmsUser.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.verifyTime" [ngbTooltip]="'plandbApp.rmsUser.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{rmsUser.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.serialNumber" [ngbTooltip]="'plandbApp.rmsUser.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{rmsUser.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="rmsUser.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsUser.createdById, 'view']">{{rmsUser.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsUser.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsUser.modifiedById, 'view']">{{rmsUser.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsUser.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsUser.verifiedById, 'view']">{{rmsUser.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsUser.rmsRole">Rms Role</span></dt>
+                <dd>
+                    <span *ngFor="let rmsRole of rmsUser.rmsRoles; let last = last">
+                        <a [routerLink]="['/rms-role-sdm-suffix', rmsRole?.id, 'view' ]">{{rmsRole.name}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rms-user-sdm-suffix', rmsUser.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

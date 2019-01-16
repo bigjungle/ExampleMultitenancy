@@ -1,0 +1,374 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-rms-dep-sdm-suffix-heading" jhiTranslate="plandbApp.rmsDep.home.createOrEditLabel">Create or edit a Rms Dep</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!rmsDep.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="rmsDep.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.depName" for="field_depName" [ngbTooltip]="'plandbApp.rmsDep.help.depName' | translate">Dep Name</label>
+                    <input type="text" class="form-control" name="depName" id="field_depName"
+                        [(ngModel)]="rmsDep.depName" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.depName?.dirty && editForm.controls.depName?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.depName?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.depTypeId" for="field_depTypeId" [ngbTooltip]="'plandbApp.rmsDep.help.depTypeId' | translate">Dep Type Id</label>
+                    <input type="text" class="form-control" name="depTypeId" id="field_depTypeId"
+                        [(ngModel)]="rmsDep.depTypeId" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.depTypeId?.dirty && editForm.controls.depTypeId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.depTypeId?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.parentDepId" for="field_parentDepId" [ngbTooltip]="'plandbApp.rmsDep.help.parentDepId' | translate">Parent Dep Id</label>
+                    <input type="text" class="form-control" name="parentDepId" id="field_parentDepId"
+                        [(ngModel)]="rmsDep.parentDepId" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.parentDepId?.dirty && editForm.controls.parentDepId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.parentDepId?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.repealFlag" for="field_repealFlag" [ngbTooltip]="'plandbApp.rmsDep.help.repealFlag' | translate">Repeal Flag</label>
+                    <input type="checkbox" class="form-control" name="repealFlag" id="field_repealFlag"
+                        [(ngModel)]="rmsDep.repealFlag" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.levelId" for="field_levelId" [ngbTooltip]="'plandbApp.rmsDep.help.levelId' | translate">Level Id</label>
+                    <input type="text" class="form-control" name="levelId" id="field_levelId"
+                        [(ngModel)]="rmsDep.levelId" maxlength="32"/>
+                    <div [hidden]="!(editForm.controls.levelId?.dirty && editForm.controls.levelId?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.levelId?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 32 }">
+                        This field cannot be longer than 32 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.depSort" for="field_depSort" [ngbTooltip]="'plandbApp.rmsDep.help.depSort' | translate">Dep Sort</label>
+                    <input type="text" class="form-control" name="depSort" id="field_depSort"
+                        [(ngModel)]="rmsDep.depSort" maxlength="10"/>
+                    <div [hidden]="!(editForm.controls.depSort?.dirty && editForm.controls.depSort?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.depSort?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 10 }">
+                        This field cannot be longer than 10 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.parentDepStr" for="field_parentDepStr" [ngbTooltip]="'plandbApp.rmsDep.help.parentDepStr' | translate">Parent Dep Str</label>
+                    <input type="text" class="form-control" name="parentDepStr" id="field_parentDepStr"
+                        [(ngModel)]="rmsDep.parentDepStr" maxlength="2560"/>
+                    <div [hidden]="!(editForm.controls.parentDepStr?.dirty && editForm.controls.parentDepStr?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.parentDepStr?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 2560 }">
+                        This field cannot be longer than 2560 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.childDepStr" for="field_childDepStr" [ngbTooltip]="'plandbApp.rmsDep.help.childDepStr' | translate">Child Dep Str</label>
+                    <input type="text" class="form-control" name="childDepStr" id="field_childDepStr"
+                        [(ngModel)]="rmsDep.childDepStr" maxlength="3999"/>
+                    <div [hidden]="!(editForm.controls.childDepStr?.dirty && editForm.controls.childDepStr?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.childDepStr?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 3999 }">
+                        This field cannot be longer than 3999 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.depDesc" for="field_depDesc" [ngbTooltip]="'plandbApp.rmsDep.help.depDesc' | translate">Dep Desc</label>
+                    <input type="text" class="form-control" name="depDesc" id="field_depDesc"
+                        [(ngModel)]="rmsDep.depDesc" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.depDesc?.dirty && editForm.controls.depDesc?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.depDesc?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.tel" for="field_tel" [ngbTooltip]="'plandbApp.rmsDep.help.tel' | translate">Tel</label>
+                    <input type="text" class="form-control" name="tel" id="field_tel"
+                        [(ngModel)]="rmsDep.tel" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.tel?.dirty && editForm.controls.tel?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.tel?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.fax" for="field_fax" [ngbTooltip]="'plandbApp.rmsDep.help.fax' | translate">Fax</label>
+                    <input type="text" class="form-control" name="fax" id="field_fax"
+                        [(ngModel)]="rmsDep.fax" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.fax?.dirty && editForm.controls.fax?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.fax?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.address" for="field_address" [ngbTooltip]="'plandbApp.rmsDep.help.address' | translate">Address</label>
+                    <input type="text" class="form-control" name="address" id="field_address"
+                        [(ngModel)]="rmsDep.address" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.address?.dirty && editForm.controls.address?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.address?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.code" for="field_code" [ngbTooltip]="'plandbApp.rmsDep.help.code' | translate">Code</label>
+                    <input type="text" class="form-control" name="code" id="field_code"
+                        [(ngModel)]="rmsDep.code" maxlength="32"/>
+                    <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.code?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 32 }">
+                        This field cannot be longer than 32 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.internet" for="field_internet" [ngbTooltip]="'plandbApp.rmsDep.help.internet' | translate">Internet</label>
+                    <input type="text" class="form-control" name="internet" id="field_internet"
+                        [(ngModel)]="rmsDep.internet" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.internet?.dirty && editForm.controls.internet?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.internet?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.mail" for="field_mail" [ngbTooltip]="'plandbApp.rmsDep.help.mail' | translate">Mail</label>
+                    <input type="text" class="form-control" name="mail" id="field_mail"
+                        [(ngModel)]="rmsDep.mail" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.mail?.dirty && editForm.controls.mail?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.mail?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by01" for="field_by01" [ngbTooltip]="'plandbApp.rmsDep.help.by01' | translate">By 01</label>
+                    <input type="text" class="form-control" name="by01" id="field_by01"
+                        [(ngModel)]="rmsDep.by01" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by01?.dirty && editForm.controls.by01?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by01?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by02" for="field_by02" [ngbTooltip]="'plandbApp.rmsDep.help.by02' | translate">By 02</label>
+                    <input type="text" class="form-control" name="by02" id="field_by02"
+                        [(ngModel)]="rmsDep.by02" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by02?.dirty && editForm.controls.by02?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by02?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by03" for="field_by03" [ngbTooltip]="'plandbApp.rmsDep.help.by03' | translate">By 03</label>
+                    <input type="text" class="form-control" name="by03" id="field_by03"
+                        [(ngModel)]="rmsDep.by03" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by03?.dirty && editForm.controls.by03?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by03?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by04" for="field_by04" [ngbTooltip]="'plandbApp.rmsDep.help.by04' | translate">By 04</label>
+                    <input type="text" class="form-control" name="by04" id="field_by04"
+                        [(ngModel)]="rmsDep.by04" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by04?.dirty && editForm.controls.by04?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by04?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by05" for="field_by05" [ngbTooltip]="'plandbApp.rmsDep.help.by05' | translate">By 05</label>
+                    <input type="text" class="form-control" name="by05" id="field_by05"
+                        [(ngModel)]="rmsDep.by05" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by05?.dirty && editForm.controls.by05?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by05?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by06" for="field_by06" [ngbTooltip]="'plandbApp.rmsDep.help.by06' | translate">By 06</label>
+                    <input type="text" class="form-control" name="by06" id="field_by06"
+                        [(ngModel)]="rmsDep.by06" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by06?.dirty && editForm.controls.by06?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by06?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by07" for="field_by07" [ngbTooltip]="'plandbApp.rmsDep.help.by07' | translate">By 07</label>
+                    <input type="text" class="form-control" name="by07" id="field_by07"
+                        [(ngModel)]="rmsDep.by07" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by07?.dirty && editForm.controls.by07?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by07?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by08" for="field_by08" [ngbTooltip]="'plandbApp.rmsDep.help.by08' | translate">By 08</label>
+                    <input type="text" class="form-control" name="by08" id="field_by08"
+                        [(ngModel)]="rmsDep.by08" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by08?.dirty && editForm.controls.by08?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by08?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by09" for="field_by09" [ngbTooltip]="'plandbApp.rmsDep.help.by09' | translate">By 09</label>
+                    <input type="text" class="form-control" name="by09" id="field_by09"
+                        [(ngModel)]="rmsDep.by09" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by09?.dirty && editForm.controls.by09?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by09?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.by10" for="field_by10" [ngbTooltip]="'plandbApp.rmsDep.help.by10' | translate">By 10</label>
+                    <input type="text" class="form-control" name="by10" id="field_by10"
+                        [(ngModel)]="rmsDep.by10" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.by10?.dirty && editForm.controls.by10?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.by10?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.validType" for="field_validType" [ngbTooltip]="'plandbApp.rmsDep.help.validType' | translate">Valid Type</label>
+                    <select class="form-control" name="validType" [(ngModel)]="rmsDep.validType" id="field_validType" >
+                        <option value="LONG">{{'plandbApp.ValidType.LONG' | translate}}</option>
+                        <option value="SCOPE">{{'plandbApp.ValidType.SCOPE' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.validBegin" for="field_validBegin" [ngbTooltip]="'plandbApp.rmsDep.help.validBegin' | translate">Valid Begin</label>
+                    <div class="d-flex">
+                        <input id="field_validBegin" type="datetime-local" class="form-control" name="validBegin" [(ngModel)]="validBegin"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.validEnd" for="field_validEnd" [ngbTooltip]="'plandbApp.rmsDep.help.validEnd' | translate">Valid End</label>
+                    <div class="d-flex">
+                        <input id="field_validEnd" type="datetime-local" class="form-control" name="validEnd" [(ngModel)]="validEnd"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.insertTime" for="field_insertTime" [ngbTooltip]="'plandbApp.rmsDep.help.insertTime' | translate">Insert Time</label>
+                    <div class="d-flex">
+                        <input id="field_insertTime" type="datetime-local" class="form-control" name="insertTime" [(ngModel)]="insertTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.updateTime" for="field_updateTime" [ngbTooltip]="'plandbApp.rmsDep.help.updateTime' | translate">Update Time</label>
+                    <div class="d-flex">
+                        <input id="field_updateTime" type="datetime-local" class="form-control" name="updateTime" [(ngModel)]="updateTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.verifyTime" for="field_verifyTime" [ngbTooltip]="'plandbApp.rmsDep.help.verifyTime' | translate">Verify Time</label>
+                    <div class="d-flex">
+                        <input id="field_verifyTime" type="datetime-local" class="form-control" name="verifyTime" [(ngModel)]="verifyTime"
+                        />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.serialNumber" for="field_serialNumber" [ngbTooltip]="'plandbApp.rmsDep.help.serialNumber' | translate">Serial Number</label>
+                    <input type="text" class="form-control" name="serialNumber" id="field_serialNumber"
+                        [(ngModel)]="rmsDep.serialNumber" maxlength="256"/>
+                    <div [hidden]="!(editForm.controls.serialNumber?.dirty && editForm.controls.serialNumber?.invalid)">
+                        <small class="form-text text-danger"
+                        [hidden]="!editForm.controls.serialNumber?.errors?.maxlength" jhiTranslate="entity.validation.maxlength" translateValues="{ max: 256 }">
+                        This field cannot be longer than 256 characters.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.createdBy" for="field_createdBy">Created By</label>
+                    <select class="form-control" id="field_createdBy" name="createdBy" [(ngModel)]="rmsDep.createdById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.modifiedBy" for="field_modifiedBy">Modified By</label>
+                    <select class="form-control" id="field_modifiedBy" name="modifiedBy" [(ngModel)]="rmsDep.modifiedById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.verifiedBy" for="field_verifiedBy">Verified By</label>
+                    <select class="form-control" id="field_verifiedBy" name="verifiedBy" [(ngModel)]="rmsDep.verifiedById" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsUserOption.id" *ngFor="let rmsUserOption of rmsusers; trackBy: trackRmsUserById">{{rmsUserOption.userName}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="plandbApp.rmsDep.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="rmsDep.parentId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="rmsDepOption.id" *ngFor="let rmsDepOption of rmsdeps; trackBy: trackRmsDepById">{{rmsDepOption.depName}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

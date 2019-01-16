@@ -1,0 +1,124 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.rmsNode.home.title">Rms Nodes</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rms-node-sdm-suffix" [routerLink]="['/rms-node-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.rmsNode.home.createLabel">
+            Create new Rms Node
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.rmsNode.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rmsNodes">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="plandbApp.rmsNode.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="plandbApp.rmsNode.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sortString"><span jhiTranslate="plandbApp.rmsNode.sortString">Sort String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descString"><span jhiTranslate="plandbApp.rmsNode.descString">Desc String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlob"><span jhiTranslate="plandbApp.rmsNode.imageBlob">Image Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlobName"><span jhiTranslate="plandbApp.rmsNode.imageBlobName">Image Blob Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="usingFlag"><span jhiTranslate="plandbApp.rmsNode.usingFlag">Using Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="plandbApp.rmsNode.remarks">Remarks</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.rmsNode.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.rmsNode.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.rmsNode.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.rmsNode.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.rmsNode.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyTime"><span jhiTranslate="plandbApp.rmsNode.verifyTime">Verify Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.rmsNode.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.rmsNode.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedByUserName"><span jhiTranslate="plandbApp.rmsNode.verifiedBy">Verified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentName"><span jhiTranslate="plandbApp.rmsNode.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let rmsNode of rmsNodes ;trackBy: trackId">
+                <td><a [routerLink]="['/rms-node-sdm-suffix', rmsNode.id, 'view' ]">{{rmsNode.id}}</a></td>
+                <td>{{rmsNode.name}}</td>
+                <td>{{rmsNode.serialNumber}}</td>
+                <td>{{rmsNode.sortString}}</td>
+                <td>{{rmsNode.descString}}</td>
+                <td>
+                    <a *ngIf="rmsNode.imageBlob" (click)="openFile(rmsNode.imageBlobContentType, rmsNode.imageBlob)">
+                        <img [src]="'data:' + rmsNode.imageBlobContentType + ';base64,' + rmsNode.imageBlob" style="max-height: 30px;" alt="rmsNode image"/>
+                    </a>
+                    <span *ngIf="rmsNode.imageBlob">{{rmsNode.imageBlobContentType}}, {{byteSize(rmsNode.imageBlob)}}</span>
+                </td>
+                <td>{{rmsNode.imageBlobName}}</td>
+                <td>{{rmsNode.usingFlag}}</td>
+                <td>{{rmsNode.remarks}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + rmsNode.validType}}">{{rmsNode.validType}}</td>
+                <td>{{rmsNode.validBegin | date:'medium'}}</td>
+                <td>{{rmsNode.validEnd | date:'medium'}}</td>
+                <td>{{rmsNode.insertTime | date:'medium'}}</td>
+                <td>{{rmsNode.updateTime | date:'medium'}}</td>
+                <td>{{rmsNode.verifyTime | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="rmsNode.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsNode.createdById , 'view' ]" >{{rmsNode.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsNode.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsNode.modifiedById , 'view' ]" >{{rmsNode.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsNode.verifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsNode.verifiedById , 'view' ]" >{{rmsNode.verifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsNode.parentId">
+                        <a [routerLink]="['../rms-node-sdm-suffix', rmsNode.parentId , 'view' ]" >{{rmsNode.parentName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rms-node-sdm-suffix', rmsNode.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rms-node-sdm-suffix', rmsNode.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rms-node-sdm-suffix/'+ rmsNode.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

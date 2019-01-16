@@ -1,0 +1,155 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.rmsDep.home.title">Rms Deps</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-rms-dep-sdm-suffix" [routerLink]="['/rms-dep-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.rmsDep.home.createLabel">
+            Create new Rms Dep
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.rmsDep.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="rmsDeps">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="depName"><span jhiTranslate="plandbApp.rmsDep.depName">Dep Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="depTypeId"><span jhiTranslate="plandbApp.rmsDep.depTypeId">Dep Type Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentDepId"><span jhiTranslate="plandbApp.rmsDep.parentDepId">Parent Dep Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="repealFlag"><span jhiTranslate="plandbApp.rmsDep.repealFlag">Repeal Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="levelId"><span jhiTranslate="plandbApp.rmsDep.levelId">Level Id</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="depSort"><span jhiTranslate="plandbApp.rmsDep.depSort">Dep Sort</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentDepStr"><span jhiTranslate="plandbApp.rmsDep.parentDepStr">Parent Dep Str</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="childDepStr"><span jhiTranslate="plandbApp.rmsDep.childDepStr">Child Dep Str</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="depDesc"><span jhiTranslate="plandbApp.rmsDep.depDesc">Dep Desc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="tel"><span jhiTranslate="plandbApp.rmsDep.tel">Tel</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fax"><span jhiTranslate="plandbApp.rmsDep.fax">Fax</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="address"><span jhiTranslate="plandbApp.rmsDep.address">Address</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="code"><span jhiTranslate="plandbApp.rmsDep.code">Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="internet"><span jhiTranslate="plandbApp.rmsDep.internet">Internet</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="mail"><span jhiTranslate="plandbApp.rmsDep.mail">Mail</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by01"><span jhiTranslate="plandbApp.rmsDep.by01">By 01</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by02"><span jhiTranslate="plandbApp.rmsDep.by02">By 02</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by03"><span jhiTranslate="plandbApp.rmsDep.by03">By 03</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by04"><span jhiTranslate="plandbApp.rmsDep.by04">By 04</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by05"><span jhiTranslate="plandbApp.rmsDep.by05">By 05</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by06"><span jhiTranslate="plandbApp.rmsDep.by06">By 06</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by07"><span jhiTranslate="plandbApp.rmsDep.by07">By 07</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by08"><span jhiTranslate="plandbApp.rmsDep.by08">By 08</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by09"><span jhiTranslate="plandbApp.rmsDep.by09">By 09</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="by10"><span jhiTranslate="plandbApp.rmsDep.by10">By 10</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.rmsDep.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.rmsDep.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.rmsDep.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.rmsDep.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.rmsDep.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyTime"><span jhiTranslate="plandbApp.rmsDep.verifyTime">Verify Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="plandbApp.rmsDep.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.rmsDep.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.rmsDep.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedByUserName"><span jhiTranslate="plandbApp.rmsDep.verifiedBy">Verified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentDepName"><span jhiTranslate="plandbApp.rmsDep.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let rmsDep of rmsDeps ;trackBy: trackId">
+                <td><a [routerLink]="['/rms-dep-sdm-suffix', rmsDep.id, 'view' ]">{{rmsDep.id}}</a></td>
+                <td>{{rmsDep.depName}}</td>
+                <td>{{rmsDep.depTypeId}}</td>
+                <td>{{rmsDep.parentDepId}}</td>
+                <td>{{rmsDep.repealFlag}}</td>
+                <td>{{rmsDep.levelId}}</td>
+                <td>{{rmsDep.depSort}}</td>
+                <td>{{rmsDep.parentDepStr}}</td>
+                <td>{{rmsDep.childDepStr}}</td>
+                <td>{{rmsDep.depDesc}}</td>
+                <td>{{rmsDep.tel}}</td>
+                <td>{{rmsDep.fax}}</td>
+                <td>{{rmsDep.address}}</td>
+                <td>{{rmsDep.code}}</td>
+                <td>{{rmsDep.internet}}</td>
+                <td>{{rmsDep.mail}}</td>
+                <td>{{rmsDep.by01}}</td>
+                <td>{{rmsDep.by02}}</td>
+                <td>{{rmsDep.by03}}</td>
+                <td>{{rmsDep.by04}}</td>
+                <td>{{rmsDep.by05}}</td>
+                <td>{{rmsDep.by06}}</td>
+                <td>{{rmsDep.by07}}</td>
+                <td>{{rmsDep.by08}}</td>
+                <td>{{rmsDep.by09}}</td>
+                <td>{{rmsDep.by10}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + rmsDep.validType}}">{{rmsDep.validType}}</td>
+                <td>{{rmsDep.validBegin | date:'medium'}}</td>
+                <td>{{rmsDep.validEnd | date:'medium'}}</td>
+                <td>{{rmsDep.insertTime | date:'medium'}}</td>
+                <td>{{rmsDep.updateTime | date:'medium'}}</td>
+                <td>{{rmsDep.verifyTime | date:'medium'}}</td>
+                <td>{{rmsDep.serialNumber}}</td>
+                <td>
+                    <div *ngIf="rmsDep.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsDep.createdById , 'view' ]" >{{rmsDep.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsDep.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsDep.modifiedById , 'view' ]" >{{rmsDep.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsDep.verifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', rmsDep.verifiedById , 'view' ]" >{{rmsDep.verifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="rmsDep.parentId">
+                        <a [routerLink]="['../rms-dep-sdm-suffix', rmsDep.parentId , 'view' ]" >{{rmsDep.parentDepName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/rms-dep-sdm-suffix', rmsDep.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/rms-dep-sdm-suffix', rmsDep.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'rms-dep-sdm-suffix/'+ rmsDep.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

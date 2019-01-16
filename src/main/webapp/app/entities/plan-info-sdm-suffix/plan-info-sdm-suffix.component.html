@@ -1,0 +1,251 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.planInfo.home.title">Plan Infos</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-plan-info-sdm-suffix" [routerLink]="['/plan-info-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.planInfo.home.createLabel">
+            Create new Plan Info
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.planInfo.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="planInfos">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="plandbApp.planInfo.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sortString"><span jhiTranslate="plandbApp.planInfo.sortString">Sort String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descString"><span jhiTranslate="plandbApp.planInfo.descString">Desc String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="jsonString"><span jhiTranslate="plandbApp.planInfo.jsonString">Json String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="plandbApp.planInfo.remarks">Remarks</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="refEvent"><span jhiTranslate="plandbApp.planInfo.refEvent">Ref Event</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentPath"><span jhiTranslate="plandbApp.planInfo.attachmentPath">Attachment Path</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentBlob"><span jhiTranslate="plandbApp.planInfo.attachmentBlob">Attachment Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="attachmentName"><span jhiTranslate="plandbApp.planInfo.attachmentName">Attachment Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="textBlob"><span jhiTranslate="plandbApp.planInfo.textBlob">Text Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlob"><span jhiTranslate="plandbApp.planInfo.imageBlob">Image Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlobName"><span jhiTranslate="plandbApp.planInfo.imageBlobName">Image Blob Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="usingFlag"><span jhiTranslate="plandbApp.planInfo.usingFlag">Using Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.planInfo.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.planInfo.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.planInfo.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.planInfo.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.planInfo.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="publishedTime"><span jhiTranslate="plandbApp.planInfo.publishedTime">Published Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyTime"><span jhiTranslate="plandbApp.planInfo.verifyTime">Verify Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyNeed"><span jhiTranslate="plandbApp.planInfo.verifyNeed">Verify Need</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyOpinion"><span jhiTranslate="plandbApp.planInfo.verifyOpinion">Verify Opinion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="viewCount"><span jhiTranslate="plandbApp.planInfo.viewCount">View Count</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="viewPermission"><span jhiTranslate="plandbApp.planInfo.viewPermission">View Permission</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="viewPermPersion"><span jhiTranslate="plandbApp.planInfo.viewPermPersion">View Perm Persion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="plandbApp.planInfo.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="versionNumber"><span jhiTranslate="plandbApp.planInfo.versionNumber">Version Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraSourceString"><span jhiTranslate="plandbApp.planInfo.paraSourceString">Para Source String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="featureKeyword"><span jhiTranslate="plandbApp.planInfo.featureKeyword">Feature Keyword</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="suggestion"><span jhiTranslate="plandbApp.planInfo.suggestion">Suggestion</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="releaseScope"><span jhiTranslate="plandbApp.planInfo.releaseScope">Release Scope</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyRecName"><span jhiTranslate="plandbApp.planInfo.verifyRec">Verify Rec</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraTypeName"><span jhiTranslate="plandbApp.planInfo.paraType">Para Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraClassName"><span jhiTranslate="plandbApp.planInfo.paraClass">Para Class</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraCatName"><span jhiTranslate="plandbApp.planInfo.paraCat">Para Cat</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraStateName"><span jhiTranslate="plandbApp.planInfo.paraState">Para State</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraSourceName"><span jhiTranslate="plandbApp.planInfo.paraSource">Para Source</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraAttrName"><span jhiTranslate="plandbApp.planInfo.paraAttr">Para Attr</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paraPropName"><span jhiTranslate="plandbApp.planInfo.paraProp">Para Prop</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.planInfo.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdDepByDepName"><span jhiTranslate="plandbApp.planInfo.createdDepBy">Created Dep By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ownerByUserName"><span jhiTranslate="plandbApp.planInfo.ownerBy">Owner By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="ownerDepByDepName"><span jhiTranslate="plandbApp.planInfo.ownerDepBy">Owner Dep By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.planInfo.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedDepByDepName"><span jhiTranslate="plandbApp.planInfo.modifiedDepBy">Modified Dep By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedByUserName"><span jhiTranslate="plandbApp.planInfo.verifiedBy">Verified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedDepByDepName"><span jhiTranslate="plandbApp.planInfo.verifiedDepBy">Verified Dep By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="publishedByUserName"><span jhiTranslate="plandbApp.planInfo.publishedBy">Published By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="publishedDepByDepName"><span jhiTranslate="plandbApp.planInfo.publishedDepBy">Published Dep By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentName"><span jhiTranslate="plandbApp.planInfo.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let planInfo of planInfos ;trackBy: trackId">
+                <td><a [routerLink]="['/plan-info-sdm-suffix', planInfo.id, 'view' ]">{{planInfo.id}}</a></td>
+                <td>{{planInfo.name}}</td>
+                <td>{{planInfo.sortString}}</td>
+                <td>{{planInfo.descString}}</td>
+                <td>{{planInfo.jsonString}}</td>
+                <td>{{planInfo.remarks}}</td>
+                <td>{{planInfo.refEvent}}</td>
+                <td>{{planInfo.attachmentPath}}</td>
+                <td>
+                    <a *ngIf="planInfo.attachmentBlob" (click)="openFile(planInfo.attachmentBlobContentType, planInfo.attachmentBlob)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="planInfo.attachmentBlob">{{planInfo.attachmentBlobContentType}}, {{byteSize(planInfo.attachmentBlob)}}</span>
+                </td>
+                <td>{{planInfo.attachmentName}}</td>
+                <td>{{planInfo.textBlob}}</td>
+                <td>
+                    <a *ngIf="planInfo.imageBlob" (click)="openFile(planInfo.imageBlobContentType, planInfo.imageBlob)">
+                        <img [src]="'data:' + planInfo.imageBlobContentType + ';base64,' + planInfo.imageBlob" style="max-height: 30px;" alt="planInfo image"/>
+                    </a>
+                    <span *ngIf="planInfo.imageBlob">{{planInfo.imageBlobContentType}}, {{byteSize(planInfo.imageBlob)}}</span>
+                </td>
+                <td>{{planInfo.imageBlobName}}</td>
+                <td>{{planInfo.usingFlag}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + planInfo.validType}}">{{planInfo.validType}}</td>
+                <td>{{planInfo.validBegin | date:'medium'}}</td>
+                <td>{{planInfo.validEnd | date:'medium'}}</td>
+                <td>{{planInfo.insertTime | date:'medium'}}</td>
+                <td>{{planInfo.updateTime | date:'medium'}}</td>
+                <td>{{planInfo.publishedTime | date:'medium'}}</td>
+                <td>{{planInfo.verifyTime | date:'medium'}}</td>
+                <td>{{planInfo.verifyNeed}}</td>
+                <td>{{planInfo.verifyOpinion}}</td>
+                <td>{{planInfo.viewCount}}</td>
+                <td jhiTranslate="{{'plandbApp.ViewPermission.' + planInfo.viewPermission}}">{{planInfo.viewPermission}}</td>
+                <td>{{planInfo.viewPermPersion}}</td>
+                <td>{{planInfo.serialNumber}}</td>
+                <td>{{planInfo.versionNumber}}</td>
+                <td>{{planInfo.paraSourceString}}</td>
+                <td>{{planInfo.featureKeyword}}</td>
+                <td>{{planInfo.suggestion}}</td>
+                <td>{{planInfo.releaseScope}}</td>
+                <td>
+                    <div *ngIf="planInfo.verifyRecId">
+                        <a [routerLink]="['../verify-rec-sdm-suffix', planInfo.verifyRecId , 'view' ]" >{{planInfo.verifyRecName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraTypeId">
+                        <a [routerLink]="['../para-type-sdm-suffix', planInfo.paraTypeId , 'view' ]" >{{planInfo.paraTypeName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraClassId">
+                        <a [routerLink]="['../para-class-sdm-suffix', planInfo.paraClassId , 'view' ]" >{{planInfo.paraClassName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraCatId">
+                        <a [routerLink]="['../para-cat-sdm-suffix', planInfo.paraCatId , 'view' ]" >{{planInfo.paraCatName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraStateId">
+                        <a [routerLink]="['../para-state-sdm-suffix', planInfo.paraStateId , 'view' ]" >{{planInfo.paraStateName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraSourceId">
+                        <a [routerLink]="['../para-source-sdm-suffix', planInfo.paraSourceId , 'view' ]" >{{planInfo.paraSourceName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraAttrId">
+                        <a [routerLink]="['../para-attr-sdm-suffix', planInfo.paraAttrId , 'view' ]" >{{planInfo.paraAttrName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.paraPropId">
+                        <a [routerLink]="['../para-prop-sdm-suffix', planInfo.paraPropId , 'view' ]" >{{planInfo.paraPropName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfo.createdById , 'view' ]" >{{planInfo.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.createdDepById">
+                        <a [routerLink]="['../rms-dep-sdm-suffix', planInfo.createdDepById , 'view' ]" >{{planInfo.createdDepByDepName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.ownerById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfo.ownerById , 'view' ]" >{{planInfo.ownerByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.ownerDepById">
+                        <a [routerLink]="['../rms-dep-sdm-suffix', planInfo.ownerDepById , 'view' ]" >{{planInfo.ownerDepByDepName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfo.modifiedById , 'view' ]" >{{planInfo.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.modifiedDepById">
+                        <a [routerLink]="['../rms-dep-sdm-suffix', planInfo.modifiedDepById , 'view' ]" >{{planInfo.modifiedDepByDepName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.verifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfo.verifiedById , 'view' ]" >{{planInfo.verifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.verifiedDepById">
+                        <a [routerLink]="['../rms-dep-sdm-suffix', planInfo.verifiedDepById , 'view' ]" >{{planInfo.verifiedDepByDepName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.publishedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', planInfo.publishedById , 'view' ]" >{{planInfo.publishedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.publishedDepById">
+                        <a [routerLink]="['../rms-dep-sdm-suffix', planInfo.publishedDepById , 'view' ]" >{{planInfo.publishedDepByDepName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="planInfo.parentId">
+                        <a [routerLink]="['../plan-info-sdm-suffix', planInfo.parentId , 'view' ]" >{{planInfo.parentName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/plan-info-sdm-suffix', planInfo.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/plan-info-sdm-suffix', planInfo.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'plan-info-sdm-suffix/'+ planInfo.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

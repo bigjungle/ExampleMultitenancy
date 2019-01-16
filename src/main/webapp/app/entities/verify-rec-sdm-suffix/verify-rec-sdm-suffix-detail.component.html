@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="verifyRec">
+            <h2><span jhiTranslate="plandbApp.verifyRec.detail.title">Verify Rec</span> {{verifyRec.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.verifyRec.name" [ngbTooltip]="'plandbApp.verifyRec.help.name' | translate">Name</span></dt>
+                <dd>
+                    <span>{{verifyRec.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.descString" [ngbTooltip]="'plandbApp.verifyRec.help.descString' | translate">Desc String</span></dt>
+                <dd>
+                    <span>{{verifyRec.descString}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.verifyResult" [ngbTooltip]="'plandbApp.verifyRec.help.verifyResult' | translate">Verify Result</span></dt>
+                <dd>
+                    <span>{{verifyRec.verifyResult}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.verifyScore" [ngbTooltip]="'plandbApp.verifyRec.help.verifyScore' | translate">Verify Score</span></dt>
+                <dd>
+                    <span>{{verifyRec.verifyScore}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.remarks" [ngbTooltip]="'plandbApp.verifyRec.help.remarks' | translate">Remarks</span></dt>
+                <dd>
+                    <span>{{verifyRec.remarks}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.insertTime" [ngbTooltip]="'plandbApp.verifyRec.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{verifyRec.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.updateTime" [ngbTooltip]="'plandbApp.verifyRec.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{verifyRec.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="verifyRec.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', verifyRec.createdById, 'view']">{{verifyRec.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.verifyRec.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="verifyRec.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', verifyRec.modifiedById, 'view']">{{verifyRec.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/verify-rec-sdm-suffix', verifyRec.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

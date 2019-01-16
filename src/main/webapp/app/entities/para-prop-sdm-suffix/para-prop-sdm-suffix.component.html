@@ -1,0 +1,124 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.paraProp.home.title">Para Props</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-para-prop-sdm-suffix" [routerLink]="['/para-prop-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.paraProp.home.createLabel">
+            Create new Para Prop
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.paraProp.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="paraProps">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="plandbApp.paraProp.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="plandbApp.paraProp.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sortString"><span jhiTranslate="plandbApp.paraProp.sortString">Sort String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descString"><span jhiTranslate="plandbApp.paraProp.descString">Desc String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlob"><span jhiTranslate="plandbApp.paraProp.imageBlob">Image Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlobName"><span jhiTranslate="plandbApp.paraProp.imageBlobName">Image Blob Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="usingFlag"><span jhiTranslate="plandbApp.paraProp.usingFlag">Using Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="plandbApp.paraProp.remarks">Remarks</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.paraProp.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.paraProp.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.paraProp.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.paraProp.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.paraProp.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyTime"><span jhiTranslate="plandbApp.paraProp.verifyTime">Verify Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.paraProp.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.paraProp.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedByUserName"><span jhiTranslate="plandbApp.paraProp.verifiedBy">Verified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentName"><span jhiTranslate="plandbApp.paraProp.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let paraProp of paraProps ;trackBy: trackId">
+                <td><a [routerLink]="['/para-prop-sdm-suffix', paraProp.id, 'view' ]">{{paraProp.id}}</a></td>
+                <td>{{paraProp.name}}</td>
+                <td>{{paraProp.serialNumber}}</td>
+                <td>{{paraProp.sortString}}</td>
+                <td>{{paraProp.descString}}</td>
+                <td>
+                    <a *ngIf="paraProp.imageBlob" (click)="openFile(paraProp.imageBlobContentType, paraProp.imageBlob)">
+                        <img [src]="'data:' + paraProp.imageBlobContentType + ';base64,' + paraProp.imageBlob" style="max-height: 30px;" alt="paraProp image"/>
+                    </a>
+                    <span *ngIf="paraProp.imageBlob">{{paraProp.imageBlobContentType}}, {{byteSize(paraProp.imageBlob)}}</span>
+                </td>
+                <td>{{paraProp.imageBlobName}}</td>
+                <td>{{paraProp.usingFlag}}</td>
+                <td>{{paraProp.remarks}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + paraProp.validType}}">{{paraProp.validType}}</td>
+                <td>{{paraProp.validBegin | date:'medium'}}</td>
+                <td>{{paraProp.validEnd | date:'medium'}}</td>
+                <td>{{paraProp.insertTime | date:'medium'}}</td>
+                <td>{{paraProp.updateTime | date:'medium'}}</td>
+                <td>{{paraProp.verifyTime | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="paraProp.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', paraProp.createdById , 'view' ]" >{{paraProp.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paraProp.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', paraProp.modifiedById , 'view' ]" >{{paraProp.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paraProp.verifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', paraProp.verifiedById , 'view' ]" >{{paraProp.verifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paraProp.parentId">
+                        <a [routerLink]="['../para-prop-sdm-suffix', paraProp.parentId , 'view' ]" >{{paraProp.parentName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/para-prop-sdm-suffix', paraProp.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/para-prop-sdm-suffix', paraProp.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'para-prop-sdm-suffix/'+ paraProp.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

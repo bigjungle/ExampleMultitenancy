@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity RmsPerson.
+    -->
+    <changeSet id="20190115083436-1" author="jhipster">
+        <createTable tableName="rms_person" remarks="RmsPerson 人员信息 @author JungleYang.">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="person_name" type="varchar(256)" remarks="人员名称">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="first_name" type="varchar(256)" remarks="姓名称">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="job_id" type="varchar(256)" remarks="工作代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_name" type="varchar(256)" remarks="最后名称">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="other_name" type="varchar(256)" remarks="其他名称">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="sex" type="boolean" remarks="性别">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="birthday" type="datetime" remarks="生日">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pic" type="varchar(256)" remarks="图片">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="icon" type="varchar(256)" remarks="图标">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mobile" type="varchar(256)" remarks="移动电话">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dep_address" type="varchar(256)" remarks="单位地址">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dep_code" type="varchar(256)" remarks="单位代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="duty_id" type="varchar(256)" remarks="职务代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="dimission_flag" type="boolean" remarks="离职标志">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="header_flag" type="boolean" remarks="正职领导标志">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="satrap_flag" type="boolean" remarks="业务负责人标志">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="leader_flag" type="boolean" remarks="领导标志">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="post_flag_1" type="boolean" remarks="岗位标志1">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="post_flag_2" type="boolean" remarks="岗位标志2">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="post_flag_3" type="boolean" remarks="岗位标志3">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="office_tel" type="varchar(256)" remarks="办公电话">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="fax" type="varchar(256)" remarks="传真">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mail_1" type="varchar(256)" remarks="邮箱1">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mail_2" type="varchar(256)" remarks="邮箱2">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="family_tel" type="varchar(256)" remarks="家庭电话">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="family_add" type="varchar(256)" remarks="家庭地址">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="family_code" type="varchar(20)" remarks="家庭代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="person_desc" type="varchar(256)" remarks="人员说明">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="id_code" type="varchar(256)" remarks="代码代码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="pop_3" type="varchar(256)" remarks="POP3">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="smtp" type="varchar(256)" remarks="SMTP">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mail_username" type="varchar(256)" remarks="邮箱用户名">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mail_password" type="varchar(256)" remarks="邮箱密码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="mail_keep_flag" type="boolean" remarks="邮箱保留标志">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="person_sort" type="varchar(10)" remarks="人员序号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="level_num" type="integer" remarks="等级号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="person_state_id" type="varchar(32)" remarks="人员状态号码">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_01" type="varchar(256)" remarks="备用01">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_02" type="varchar(256)" remarks="备用02">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_03" type="varchar(256)" remarks="备用03">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_04" type="varchar(256)" remarks="备用04">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_05" type="varchar(256)" remarks="备用05">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_06" type="varchar(256)" remarks="备用06">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_07" type="varchar(256)" remarks="备用07">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_08" type="varchar(256)" remarks="备用08">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_09" type="varchar(256)" remarks="备用09">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="by_10" type="varchar(256)" remarks="备用10">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valid_type" type="varchar(255)" remarks="有效类型">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valid_begin" type="datetime" remarks="生效开始时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="valid_end" type="datetime" remarks="有效截止时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="insert_time" type="datetime" remarks="创建时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="update_time" type="datetime" remarks="最后修改时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="verify_time" type="datetime" remarks="审核时间">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="serial_number" type="varchar(256)" remarks="编号">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="modified_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="verified_by_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        <dropDefaultValue tableName="rms_person" columnName="birthday" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_person" columnName="valid_begin" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_person" columnName="valid_end" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_person" columnName="insert_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_person" columnName="update_time" columnDataType="datetime"/>
+        <dropDefaultValue tableName="rms_person" columnName="verify_time" columnDataType="datetime"/>
+        
+    </changeSet>
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
+</databaseChangeLog>

@@ -1,0 +1,1683 @@
+//应急预案库
+//source 来源
+//state 状态
+
+//type 类型
+//classification 分类
+//category 类别
+
+//property 属性
+//attribute 特性
+
+//Approve 审批
+//verify 审核
+//Review 审查
+//Check 检查
+
+/**
+ * 有效类别 长期和期间
+ * @author JungleYang
+ */
+enum ValidType {
+	LONG,SCOPE
+}
+
+/**
+ * 查看权限类别 查看权限名称 创建人,本单位,本单位和下级单位,全部,自定
+ * @author JungleYang
+ */
+enum ViewPermission {
+	PRIVATEVIEW,DEFAULTVIEW,PROTECTVIEW,PUBLICVIEW,CUSTOMVIEW
+}
+
+/**
+ * PlanInfo 预案库模板表
+ * @author JungleYang
+ */
+entity PlanInfo{
+    /** 预案 */
+    name      String required  maxlength(256),
+    /** 序号 */
+ 	sortString      String   maxlength(10),
+ 	/** 描述 */
+ 	descString  String   maxlength(4000),
+ 	/** json格式数据 */
+ 	jsonString  String   maxlength(4000),
+     /** 备注 */
+ 	remarks      String   maxlength(4000),
+ 	/** 相关事件 */
+     refEvent      String   maxlength(512),
+ 	/** 附件路径 */
+ 	attachmentPath    String   maxlength(4000),
+ 	/** 附件 */
+ 	attachmentBlob    Blob,
+ 	/** 附件名称 */
+ 	attachmentName    String   maxlength(4000),
+ 	/** 文本附件 */
+ 	textBlob    TextBlob,
+ 	/** 图片附件 */
+ 	imageBlob    ImageBlob,
+ 	/** 附件名称 */
+ 	imageBlobName    String   maxlength(4000),
+ 	/** 是否使用 */
+ 	usingFlag       Boolean,
+ 	/** 有效类型 */
+    validType ValidType,
+ 	/** 生效开始时间 */
+ 	validBegin       Instant,
+ 	/** 有效截止时间 */
+ 	validEnd         Instant,
+ 	/** 创建时间 */
+ 	insertTime       Instant,
+ 	/** 最后修改时间 */
+ 	updateTime       Instant,
+ 	/** 发布时间 */
+    publishedTime       Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+    /** 审核需要 */
+    verifyNeed       Boolean,
+    /** 审核意见 */
+    verifyOpinion      String   maxlength(4000),
+    /** 查看次数 */
+    viewCount  Integer,
+    /** 查看权限类别 */
+    viewPermission ViewPermission,
+    /** 查看权限人员Json */
+    viewPermPersion  String   maxlength(4000),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 版本号 */
+    versionNumber  String   maxlength(256),
+    /** 来源相关信息 */
+    paraSourceString  String   maxlength(4000),
+    /** 特征关键词 */
+    featureKeyword  String   maxlength(4000),
+    /** 我的建议 */
+    suggestion  String   maxlength(4000),
+    /** 发布范围 */
+    releaseScope  String   maxlength(4000)
+ }
+
+ /**
+  * Plan Step 预案模板步骤表
+  * @author JungleYang
+  */
+ entity PlanInfoStep{
+ 	/** 预案库类型参数名称 */
+ 	name String required maxlength(64),
+ 	/** 序号 */
+ 	sortString  String   maxlength(10),
+ 	/** 描述 */
+ 	descString  String   maxlength(4000),
+ 	/** json格式数据 */
+ 	jsonString  String   maxlength(4000),
+ 	/** 备注 */
+ 	remarks      String   maxlength(4000),
+ 	/** 附件路径 */
+ 	attachmentPath    String   maxlength(4000),
+ 	/** 附件 */
+ 	attachmentBlob    Blob,
+ 	/** 附件名称 */
+ 	attachmentName    String   maxlength(4000),
+ 	/** 文本附件 */
+ 	textBlob    TextBlob,
+ 	/** 图片附件 */
+ 	imageBlob    ImageBlob,
+ 	/** 附件名称 */
+ 	imageBlobName    String   maxlength(4000),
+ 	/** 是否使用 */
+ 	usingFlag       Boolean,
+     /** 有效类型 */
+ 	validType ValidType,
+   	/** 生效开始时间 */
+ 	validBegin Instant,
+   	/** 有效截止时间 */
+ 	validEnd Instant,
+   	/** 创建时间 */
+ 	insertTime  Instant,
+   	/** 最后修改时间 */
+ 	updateTime  Instant,
+    /** 步骤顺序 */
+    stepOrder   Integer,
+    /** 发布时间 */
+    publishedTime       Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+    /** 审核需要 */
+    verifyNeed       Boolean,
+    /** 审核意见 */
+    verifyOpinion      String   maxlength(4000),
+    /** 查看次数 */
+    viewCount  Integer,
+    /** 查看权限类别 */
+    viewPermission ViewPermission,
+    /** 查看权限人员Json */
+    viewPermPersion  String   maxlength(4000),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 版本号 */
+    versionNumber  String   maxlength(256)
+ }
+
+/**
+ * attachment 预案附件表
+ * @author JungleYang
+ */
+entity PlanInfoAtch{
+    /** 名称 */
+    name String required  maxlength(1000),
+    /** 存储路径 */
+    storeDir  String   maxlength(4000),
+    /** 存储名称 */
+    storeName   String   maxlength(4000),
+    /** 序号 */
+    sortString      String   maxlength(10),
+    /** 文件类型 */
+    fileType         String   maxlength(256),
+    /** 删除标志 */
+    deleteFlag       Boolean,
+    /** 存储类型 */
+    storeType String   maxlength(256),
+    /** 版本 */
+    ver             String   maxlength(256),
+    /** 加密标志 */
+    encryptedFlag        String   maxlength(256),
+    /** 加密类型 */
+    encryptedType        String   maxlength(256),
+    /** json格式数据 */
+    jsonString  String   maxlength(4000),
+    /** 备注 */
+    remarks      String   maxlength(4000),
+    /** 附件路径 */
+    attachmentPath    String   maxlength(4000),
+    /** 附件 */
+    attachmentBlob    Blob,
+    /** 附件名称 */
+    attachmentName    String   maxlength(4000),
+    /** 文本附件 */
+    textBlob    TextBlob,
+    /** 图片附件 */
+    imageBlob    ImageBlob,
+    /** 附件名称 */
+    imageBlobName    String   maxlength(4000),
+    /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant,
+    /** 发布时间 */
+    publishedTime       Instant
+}
+
+/**
+ * step attachment 预案步骤附件表
+ * @author JungleYang
+ */
+entity PlanInfoStepAtch{
+    /** 名称 */
+    name String required  maxlength(1000),
+    /** 存储路径 */
+    storeDir  String   maxlength(4000),
+    /** 存储名称 */
+    storeName   String   maxlength(4000),
+    /** 序号 */
+    sortString      String   maxlength(10),
+    /** 文件类型 */
+    fileType         String   maxlength(256),
+    /** 删除标志 */
+    deleteFlag       Boolean,
+    /** 存储类型 */
+    storeType String   maxlength(256),
+    /** 版本 */
+    ver             String   maxlength(256),
+    /** 加密标志 */
+    encryptedFlag        String   maxlength(256),
+    /** 加密类型 */
+    encryptedType        String   maxlength(256),
+    /** json格式数据 */
+    jsonString  String   maxlength(4000),
+    /** 备注 */
+    remarks      String   maxlength(4000),
+    /** 附件路径 */
+    attachmentPath    String   maxlength(4000),
+    /** 附件 */
+    attachmentBlob    Blob,
+    /** 附件名称 */
+    attachmentName    String   maxlength(4000),
+    /** 文本附件 */
+    textBlob    TextBlob,
+    /** 图片附件 */
+    imageBlob    ImageBlob,
+    /** 附件名称 */
+    imageBlobName    String   maxlength(4000),
+    /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant
+}
+
+/**
+ * PlanInfo 预案数据表
+ * @author JungleYang
+ */
+ entity PlanInfoData{
+    /** 预案名称 */
+    name      String required  maxlength(256),
+    /** 序号 */
+ 	sortString      String   maxlength(10),
+ 	/** 描述 */
+ 	descString  String   maxlength(4000),
+ 	/** json格式数据 */
+ 	jsonString  String   maxlength(4000),
+     /** 备注 */
+ 	remarks      String   maxlength(4000),
+ 	/** 相关事件 */
+     refEvent      String   maxlength(512),
+ 	/** 附件路径 */
+ 	attachmentPath    String   maxlength(4000),
+ 	/** 附件 */
+ 	attachmentBlob    Blob,
+ 	/** 附件名称 */
+ 	attachmentName    String   maxlength(4000),
+ 	/** 文本附件 */
+ 	textBlob    TextBlob,
+ 	/** 图片附件 */
+ 	imageBlob    ImageBlob,
+ 	/** 附件名称 */
+ 	imageBlobName    String   maxlength(4000),
+ 	/** 是否使用 */
+ 	usingFlag       Boolean,
+     /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+    /** 审核需要 */
+    verifyNeed       Boolean,
+    /** 审核意见 */
+    verifyOpinion      String   maxlength(4000),
+    /** 查看次数 */
+    viewCount  Integer,
+    /** 查看权限类别 */
+    viewPermission ViewPermission,
+    /** 查看权限人员Json */
+    viewPermPersion  String   maxlength(4000),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 版本号 */
+    versionNumber  String   maxlength(256),
+    /** 来源相关信息 */
+    paraSourceString  String   maxlength(4000),
+    /** 特征关键词 */
+    featureKeyword  String   maxlength(4000),
+    /** 我的建议 */
+    suggestion  String   maxlength(4000),
+    /** 发布范围 */
+    releaseScope  String   maxlength(4000),
+    /** 当前步骤 */
+    currentStepOrder   Integer
+ }
+
+ /**
+  * Plan Step Data预案步骤数据表
+  * @author JungleYang
+  */
+ entity PlanInfoStepData{
+ 	/** 预案库类型参数名称 */
+ 	name String required maxlength(64),
+ 	/** 序号 */
+ 	sortString  String   maxlength(10),
+ 	/** 描述 */
+ 	descString  String   maxlength(4000),
+ 	/** json格式数据 */
+ 	jsonString  String   maxlength(4000),
+ 	/** 备注 */
+ 	remarks      String   maxlength(4000),
+ 	/** 附件路径 */
+ 	attachmentPath    String   maxlength(4000),
+ 	/** 附件 */
+ 	attachmentBlob    Blob,
+ 	/** 附件名称 */
+ 	attachmentName    String   maxlength(4000),
+ 	/** 文本附件 */
+ 	textBlob    TextBlob,
+ 	/** 图片附件 */
+ 	imageBlob    ImageBlob,
+ 	/** 附件名称 */
+ 	imageBlobName    String   maxlength(4000),
+ 	/** 是否使用 */
+ 	usingFlag       Boolean,
+    /** 有效类型 */
+ 	validType ValidType,
+   	/** 生效开始时间 */
+ 	validBegin Instant,
+   	/** 有效截止时间 */
+ 	validEnd Instant,
+   	/** 创建时间 */
+ 	insertTime  Instant,
+   	/** 最后修改时间 */
+ 	updateTime  Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+    /** 审核需要 */
+    verifyNeed       Boolean,
+    /** 审核意见 */
+    verifyOpinion      String   maxlength(4000),
+    /** 查看次数 */
+    viewCount  Integer,
+    /** 查看权限类别 */
+    viewPermission ViewPermission,
+    /** 查看权限人员Json */
+    viewPermPersion  String   maxlength(4000),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 版本号 */
+    versionNumber  String   maxlength(256),
+    /** 步骤顺序 */
+    stepOrder   Integer
+ }
+
+
+/**
+ * attachment 预案数据附件表
+ * @author JungleYang
+ */
+entity PlanInfoDataAtch{
+    /** 名称 */
+    name String required  maxlength(1000),
+    /** 存储路径 */
+    storeDir  String   maxlength(4000),
+    /** 存储名称 */
+    storeName   String   maxlength(4000),
+    /** 序号 */
+    sortString      String   maxlength(10),
+    /** 文件类型 */
+    fileType         String   maxlength(256),
+    /** 删除标志 */
+    deleteFlag       Boolean,
+    /** 存储类型 */
+    storeType String   maxlength(256),
+    /** 版本 */
+    ver             String   maxlength(256),
+    /** 加密标志 */
+    encryptedFlag        String   maxlength(256),
+    /** 加密类型 */
+    encryptedType        String   maxlength(256),
+    /** json格式数据 */
+    jsonString  String   maxlength(4000),
+    /** 备注 */
+    remarks      String   maxlength(4000),
+    /** 附件路径 */
+    attachmentPath    String   maxlength(4000),
+    /** 附件 */
+    attachmentBlob    Blob,
+    /** 附件名称 */
+    attachmentName    String   maxlength(4000),
+    /** 文本附件 */
+    textBlob    TextBlob,
+    /** 图片附件 */
+    imageBlob    ImageBlob,
+    /** 附件名称 */
+    imageBlobName    String   maxlength(4000),
+    /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant
+}
+
+/**
+ * step attachment 预案步骤数据附件表
+ * @author JungleYang
+ */
+entity PlanInfoStepDataAtch{
+    /** 名称 */
+    name String required  maxlength(1000),
+    /** 存储路径 */
+    storeDir  String   maxlength(4000),
+    /** 存储名称 */
+    storeName   String   maxlength(4000),
+    /** 序号 */
+    sortString      String   maxlength(10),
+    /** 文件类型 */
+    fileType         String   maxlength(256),
+    /** 删除标志 */
+    deleteFlag       Boolean,
+    /** 存储类型 */
+    storeType String   maxlength(256),
+    /** 版本 */
+    ver             String   maxlength(256),
+    /** 加密标志 */
+    encryptedFlag        String   maxlength(256),
+    /** 加密类型 */
+    encryptedType        String   maxlength(256),
+    /** json格式数据 */
+    jsonString  String   maxlength(4000),
+    /** 备注 */
+    remarks      String   maxlength(4000),
+    /** 附件路径 */
+    attachmentPath    String   maxlength(4000),
+    /** 附件 */
+    attachmentBlob    Blob,
+    /** 附件名称 */
+    attachmentName    String   maxlength(4000),
+    /** 文本附件 */
+    textBlob    TextBlob,
+    /** 图片附件 */
+    imageBlob    ImageBlob,
+    /** 附件名称 */
+    imageBlobName    String   maxlength(4000),
+    /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant
+}
+
+
+/**
+ * PlanInfo 预案数据历史表
+ * @author JungleYang
+ */
+ entity PlanInfoDataHis{
+    /** 预案名称 */
+    name      String required  maxlength(256),
+    /** 序号 */
+ 	sortString      String   maxlength(10),
+ 	/** 描述 */
+ 	descString  String   maxlength(4000),
+ 	/** json格式数据 */
+ 	jsonString  String   maxlength(4000),
+     /** 备注 */
+ 	remarks      String   maxlength(4000),
+ 	/** 相关事件 */
+     refEvent      String   maxlength(512),
+ 	/** 附件路径 */
+ 	attachmentPath    String   maxlength(4000),
+ 	/** 附件 */
+ 	attachmentBlob    Blob,
+ 	/** 附件名称 */
+ 	attachmentName    String   maxlength(4000),
+ 	/** 文本附件 */
+ 	textBlob    TextBlob,
+ 	/** 图片附件 */
+ 	imageBlob    ImageBlob,
+ 	/** 附件名称 */
+ 	imageBlobName    String   maxlength(4000),
+ 	/** 是否使用 */
+ 	usingFlag       Boolean,
+     /** 有效类型 */
+    validType ValidType,
+ 	 	/** 生效开始时间 */
+ 	validBegin       Instant,
+ 	 	/** 有效截止时间 */
+ 	validEnd         Instant,
+ 	 	/** 创建时间 */
+ 	insertTime       Instant,
+ 	 	/** 最后修改时间 */
+ 	updateTime       Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+    /** 审核需要 */
+    verifyNeed       Boolean,
+    /** 审核意见 */
+    verifyOpinion      String   maxlength(4000),
+    /** 查看次数 */
+    viewCount  Integer,
+    /** 查看权限类别 */
+    viewPermission ViewPermission,
+    /** 查看权限人员Json */
+    viewPermPersion  String   maxlength(4000),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 版本号 */
+    versionNumber  String   maxlength(256),
+    /** 来源相关信息 */
+    paraSourceString  String   maxlength(4000),
+    /** 特征关键词 */
+    featureKeyword  String   maxlength(4000),
+    /** 我的建议 */
+    suggestion  String   maxlength(4000),
+    /** 发布范围 */
+    releaseScope  String   maxlength(4000) ,
+    /** 当前步骤 */
+    currentStepOrder   Integer
+ }
+
+ /**
+  * Plan Step Data预案步骤数据历史表
+  * @author JungleYang
+  */
+ entity PlanInfoStepDataHis{
+ 	/** 预案库类型参数名称 */
+ 	name String required maxlength(64),
+ 	/** 序号 */
+ 	sortString  String   maxlength(10),
+ 	/** 描述 */
+ 	descString  String   maxlength(4000),
+ 	/** json格式数据 */
+ 	jsonString  String   maxlength(4000),
+ 	/** 备注 */
+ 	remarks      String   maxlength(4000),
+ 	/** 附件路径 */
+ 	attachmentPath    String   maxlength(4000),
+ 	/** 附件 */
+ 	attachmentBlob    Blob,
+ 	/** 附件名称 */
+ 	attachmentName    String   maxlength(4000),
+ 	/** 文本附件 */
+ 	textBlob    TextBlob,
+ 	/** 图片附件 */
+ 	imageBlob    ImageBlob,
+ 	/** 附件名称 */
+ 	imageBlobName    String   maxlength(4000),
+ 	/** 是否使用 */
+ 	usingFlag       Boolean,
+    /** 有效类型 */
+ 	validType ValidType,
+   	/** 生效开始时间 */
+ 	validBegin Instant,
+   	/** 有效截止时间 */
+ 	validEnd Instant,
+   	/** 创建时间 */
+ 	insertTime  Instant,
+   	/** 最后修改时间 */
+ 	updateTime  Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+    /** 审核需要 */
+    verifyNeed       Boolean,
+    /** 审核意见 */
+    verifyOpinion      String   maxlength(4000),
+    /** 查看次数 */
+    viewCount  Integer,
+    /** 查看权限类别 */
+    viewPermission ViewPermission,
+    /** 查看权限人员Json */
+    viewPermPersion  String   maxlength(4000),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 版本号 */
+    versionNumber  String   maxlength(256),
+    /** 步骤顺序 */
+    stepOrder   Integer
+ }
+
+
+/**
+ * attachment 预案数据附件历史表
+ * @author JungleYang
+ */
+entity PlanInfoDataAtchHis{
+    /** 名称 */
+    name String required  maxlength(1000),
+    /** 存储路径 */
+    storeDir  String   maxlength(4000),
+    /** 存储名称 */
+    storeName   String   maxlength(4000),
+    /** 序号 */
+    sortString      String   maxlength(10),
+    /** 文件类型 */
+    fileType         String   maxlength(256),
+    /** 删除标志 */
+    deleteFlag       Boolean,
+    /** 存储类型 */
+    storeType String   maxlength(256),
+    /** 版本 */
+    ver             String   maxlength(256),
+    /** 加密标志 */
+    encryptedFlag        String   maxlength(256),
+    /** 加密类型 */
+    encryptedType        String   maxlength(256),
+    /** json格式数据 */
+    jsonString  String   maxlength(4000),
+    /** 备注 */
+    remarks      String   maxlength(4000),
+    /** 附件路径 */
+    attachmentPath    String   maxlength(4000),
+    /** 附件 */
+    attachmentBlob    Blob,
+    /** 附件名称 */
+    attachmentName    String   maxlength(4000),
+    /** 文本附件 */
+    textBlob    TextBlob,
+    /** 图片附件 */
+    imageBlob    ImageBlob,
+    /** 附件名称 */
+    imageBlobName    String   maxlength(4000),
+    /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant
+}
+
+/**
+ * step attachment 预案步骤数据附件历史表
+ * @author JungleYang
+ */
+entity PlanInfoStepDataAtchHis{
+    /** 名称 */
+    name String required  maxlength(1000),
+    /** 存储路径 */
+    storeDir  String   maxlength(4000),
+    /** 存储名称 */
+    storeName   String   maxlength(4000),
+    /** 序号 */
+    sortString      String   maxlength(10),
+    /** 文件类型 */
+    fileType         String   maxlength(256),
+    /** 删除标志 */
+    deleteFlag       Boolean,
+    /** 存储类型 */
+    storeType String   maxlength(256),
+    /** 版本 */
+    ver             String   maxlength(256),
+    /** 加密标志 */
+    encryptedFlag        String   maxlength(256),
+    /** 加密类型 */
+    encryptedType        String   maxlength(256),
+    /** json格式数据 */
+    jsonString  String   maxlength(4000),
+    /** 备注 */
+    remarks      String   maxlength(4000),
+    /** 附件路径 */
+    attachmentPath    String   maxlength(4000),
+    /** 附件 */
+    attachmentBlob    Blob,
+    /** 附件名称 */
+    attachmentName    String   maxlength(4000),
+    /** 文本附件 */
+    textBlob    TextBlob,
+    /** 图片附件 */
+    imageBlob    ImageBlob,
+    /** 附件名称 */
+    imageBlobName    String   maxlength(4000),
+    /** 有效类型 */
+    validType ValidType,
+    /** 生效开始时间 */
+    validBegin       Instant,
+    /** 有效截止时间 */
+    validEnd         Instant,
+    /** 创建时间 */
+    insertTime       Instant,
+    /** 最后修改时间 */
+    updateTime       Instant
+}
+/**
+ * Verify Record 审核记录表
+ * @author.
+ */
+entity VerifyRec {
+	/** 名称 */
+	name String required maxlength(256),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 审核结果 */
+	verifyResult  Boolean,
+    /** 审核得分 */
+    verifyScore  Integer,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant
+}
+
+/**
+ * Para Type 类型参数表
+ * @author.
+ */
+entity ParaType {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+	/** 审核时间 */
+	verifyTime       Instant
+}
+
+/**
+ * Para Classification  分类参数表
+ * @author JungleYang.
+ */
+entity ParaClass {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+    /** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+    /** 审核时间 */
+    verifyTime       Instant
+}
+
+/**
+ * Para Category  类别参数表
+ * @author JungleYang.
+ */
+entity ParaCat {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+   /** 审核时间 */
+   verifyTime       Instant
+}
+
+
+/**
+ * Para State 状态参数表
+ * @author.
+ */
+entity ParaState {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+    /** 审核时间 */
+    verifyTime       Instant
+}
+
+/**
+ * Para Source 来源参数表
+ * @author.
+ */
+entity ParaSource {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+      /** 审核时间 */
+      verifyTime       Instant
+}
+
+/**
+ * Para Property 属性参数表
+ * @author.
+ */
+entity ParaProp {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+      /** 审核时间 */
+      verifyTime       Instant
+}
+
+/**
+ * Para Attribute 特性参数表
+ * @author.
+ */
+entity ParaAttr {
+	/** 名称 */
+	name String required maxlength(256),
+    /** 编号 */
+    serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+    /** 审核时间 */
+    verifyTime       Instant
+}
+
+/** Temporarily added RmsUser，RmsPerson，RmsDep to facilitate development */
+/**
+ * RmsUser 用户信息
+ * @author JungleYang.
+ */
+entity RmsUser  {
+   /** 姓名 */
+   userName            String   maxlength(256),
+   /** 人员代码 */
+   personId            String   maxlength(256),
+   /** 用户密码 */
+   userPassword        String   maxlength(640),
+   /** 办理密码 */
+   processPassword     String   maxlength(640),
+   /** 用户序号 */
+   userSort            String   maxlength(10),
+      /** 用户说明 */
+   userDesc         String   maxlength(256),
+   /** 用户密码校验时长 */
+   userPasswordValiInstantTimes Integer,
+   /** 用户密码锁定标志 */
+   userPasswordLockFlag Boolean,
+   /** 处理密码校验时长 */
+   procPasswordValiInstantTimes Integer,
+   /** 用户密码锁定标志 */
+   procPasswordLockFlag String   maxlength(256),
+   /** 是否使用 */
+   userProp            String   maxlength(256),
+   /** 备用01 */
+   by01                 String   maxlength(256),
+   /** 备用02 */
+   by02                 String   maxlength(256),
+   /** 备用03 */
+   by03                 String   maxlength(256),
+   /** 备用04 */
+   by04                 String   maxlength(256),
+   /** 备用05 */
+   by05                 String   maxlength(256),
+   /** 有效类型 */
+   validType ValidType,
+   /** 生效开始时间 */
+   validBegin Instant,
+   /** 有效截止时间 */
+   validEnd Instant,
+   /** 创建时间 */
+   insertTime Instant,
+   /** 最后修改时间 */
+   updateTime Instant,
+    /** 审核时间 */
+    verifyTime       Instant,
+ 	/** 编号 */
+ 	serialNumber String  maxlength(256)
+}
+/**
+ * RmsPerson 人员信息
+ * @author JungleYang.
+ */
+entity RmsPerson  {
+   /** 人员名称 */
+   personName          String   maxlength(256),
+   /** 姓名称 */
+   firstName           String   maxlength(256),
+   /** 工作代码 */
+   jobId               String   maxlength(256),
+   /** 最后名称 */
+   lastName            String   maxlength(256),
+   /** 其他名称 */
+   otherName           String   maxlength(256),
+   /** 性别 */
+   sex                  Boolean,
+   /** 生日 */
+   birthday             Instant,
+   /** 图片 */
+   pic                  String   maxlength(256),
+   /** 图标 */
+   icon                 String   maxlength(256),
+   /** 移动电话 */
+   mobile               String   maxlength(256),
+   /** 单位地址 */
+   depAddress          String   maxlength(256),
+   /** 单位代码 */
+   depCode             String   maxlength(256),
+   /** 职务代码 */
+   dutyId              String   maxlength(256),
+   /** 离职标志 */
+   dimissionFlag       Boolean,
+   /** 正职领导标志 */
+   headerFlag          Boolean,
+   /** 业务负责人标志 */
+   satrapFlag          Boolean,
+   /** 领导标志 */
+   leaderFlag          Boolean,
+   /** 岗位标志1 */
+   postFlag1          Boolean,
+   /** 岗位标志2 */
+   postFlag2          Boolean,
+   /** 岗位标志3 */
+   postFlag3          Boolean,
+   /** 办公电话 */
+   officeTel           String   maxlength(256),
+   /** 传真 */
+   fax                  String   maxlength(256),
+   /** 邮箱1 */
+   mail1                String   maxlength(256),
+   /** 邮箱2 */
+   mail2                String   maxlength(256),
+   /** 家庭电话 */
+   familyTel           String   maxlength(256),
+   /** 家庭地址 */
+   familyAdd           String   maxlength(256),
+   /** 家庭代码 */
+   familyCode          String   maxlength(20),
+   /** 人员说明 */
+   personDesc      String   maxlength(256),
+   /** 代码代码 */
+   idCode              String   maxlength(256),
+   /** POP3 */
+   pop3                 String   maxlength(256),
+   /** SMTP */
+   smtp                 String   maxlength(256),
+   /** 邮箱用户名 */
+   mailUsername        String   maxlength(256),
+   /** 邮箱密码 */
+   mailPassword        String   maxlength(256),
+   /** 邮箱保留标志 */
+   mailKeepFlag       Boolean,
+   /** 人员序号 */
+   personSort          String   maxlength(10),
+   /** 等级号 */
+   levelNum            Integer,
+   /** 人员状态号码 */
+   personStateId      String    maxlength(32)  ,
+   /** 备用01 */
+   by01                 String   maxlength(256),
+   /** 备用02 */
+   by02                 String   maxlength(256),
+   /** 备用03 */
+   by03                 String   maxlength(256),
+   /** 备用04 */
+   by04                 String   maxlength(256),
+   /** 备用05 */
+   by05                 String   maxlength(256),
+   /** 备用06 */
+   by06                 String   maxlength(256),
+   /** 备用07 */
+   by07                 String   maxlength(256),
+   /** 备用08 */
+   by08                 String   maxlength(256),
+   /** 备用09 */
+   by09                 String   maxlength(256),
+   /** 备用10 */
+   by10                 String   maxlength(256),
+   /** 有效类型 */
+	validType ValidType,
+   /** 生效开始时间 */
+   validBegin Instant,
+   /** 有效截止时间 */
+   validEnd Instant,
+   /** 创建时间 */
+   insertTime Instant,
+   /** 最后修改时间 */
+   updateTime Instant,
+ /** 审核时间 */
+ verifyTime       Instant,
+ 	/** 编号 */
+ 	serialNumber String  maxlength(256)
+}
+/**
+ * RmsDep 单位信息
+ * @author JungleYang.
+ */
+entity RmsDep  {
+   /** 单位名称 */
+   depName             String   maxlength(256),
+   /** 单位类型代码 */
+   depTypeId          String   maxlength(256),
+   /** 上级单位代码 */
+   parentDepId        String   maxlength(256),
+   /** 撤销标志 */
+   repealFlag          Boolean,
+   /** 等级代码 */
+   levelId             String    maxlength(32) ,
+   /** 单位序号 */
+   depSort             String   maxlength(10),
+   /** 上级单位字符串 */
+   parentDepStr       String   maxlength(2560),
+   /** 子单位字符串 */
+   childDepStr        String   maxlength(3999),
+   /** 单位说明 */
+   depDesc         String   maxlength(256),
+   /** 电话 */
+   tel                  String   maxlength(256),
+   /** 传真 */
+   fax                  String   maxlength(256),
+   /** 地址 */
+   address              String   maxlength(256),
+   /** 代码 */
+   code                 String   maxlength(32),
+   /** 网站 */
+   internet             String   maxlength(256),
+   /** 邮箱 */
+   mail                 String   maxlength(256),
+   /** 备用01 */
+   by01                 String   maxlength(256),
+   /** 备用02 */
+   by02                 String   maxlength(256),
+   /** 备用03 */
+   by03                 String   maxlength(256),
+   /** 备用04 */
+   by04                 String   maxlength(256),
+   /** 备用05 */
+   by05                 String   maxlength(256),
+   /** 备用06 */
+   by06                 String   maxlength(256),
+   /** 备用07 */
+   by07                 String   maxlength(256),
+   /** 备用08 */
+   by08                 String   maxlength(256),
+   /** 备用09 */
+   by09                 String   maxlength(256),
+   /** 备用10 */
+   by10                 String   maxlength(256),
+   /** 有效类型 */
+   	validType ValidType,
+   /** 生效开始时间 */
+   validBegin Instant,
+   /** 有效截止时间 */
+   validEnd Instant,
+   /** 创建时间 */
+   insertTime Instant,
+   /** 最后修改时间 */
+   updateTime Instant,
+     /** 审核时间 */
+     verifyTime       Instant,
+ 	/** 编号 */
+ 	serialNumber String  maxlength(256)
+}
+
+/**
+ * RmsRole 角色信息
+ * @author JungleYang.
+ */
+entity RmsRole {
+	/** 名称 */
+	name String required maxlength(256),
+	/** 编号 */
+	serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+	/** 审核时间 */
+	verifyTime   Instant
+}
+
+/**
+ * RmsNode 节点信息
+ * @author JungleYang.
+ */
+entity RmsNode {
+	/** 名称 */
+	name String required maxlength(256),
+	/** 编号 */
+	serialNumber String  maxlength(256),
+	/** 序号 */
+	sortString String maxlength(10),
+	/** 描述 */
+	descString String maxlength(256),
+	/** 图片附件 */
+	imageBlob    ImageBlob,
+	/** 图片附件名称 */
+	imageBlobName    String   maxlength(512),
+	/** 是否使用 */
+	usingFlag  Boolean,
+	/** 备注 */
+	remarks      String   maxlength(1000),
+	/** 有效类型 */
+	validType ValidType,
+	/** 生效开始时间 */
+	validBegin Instant,
+	/** 有效截止时间 */
+	validEnd Instant,
+	/** 创建时间 */
+	insertTime  Instant,
+	/** 最后修改时间 */
+	updateTime  Instant,
+	/** 审核时间 */
+	verifyTime   Instant
+}
+
+relationship ManyToOne{
+
+    //** 预案审核记录 */
+    PlanInfo{verifyRec(name)}  to VerifyRec,
+    //** 预案类型 */
+	PlanInfo{paraType(name)}  to ParaType,
+	//** 预案分类 */
+	PlanInfo{paraClass(name)}  to ParaClass,
+	//** 预案类别 */
+	PlanInfo{paraCat(name)}  to ParaCat,
+	//** 预案状态 */
+	PlanInfo{paraState(name)}  to ParaState,
+	//** 预案来源 */
+	PlanInfo{paraSource(name)}  to ParaSource,
+	//** 预案属性 */
+	PlanInfo{paraAttr(name)}  to ParaAttr,
+    //** 预案特性 */
+    PlanInfo{paraProp(name)}  to ParaProp,
+    //** 预案信息创建人员 */
+    PlanInfo{createdBy(userName)}  to RmsUser ,
+    //** 预案信息创建单位 */
+    PlanInfo{createdDepBy(depName)} to RmsDep ,
+    //** 预案信息所属人员 */
+    PlanInfo{ownerBy(userName)}  to RmsUser ,
+    //** 预案信息所属单位 */
+    PlanInfo{ownerDepBy(depName)} to RmsDep ,
+    //** 预案信息修改人员 */
+    PlanInfo{modifiedBy(userName)} to RmsUser ,
+    //** 预案信息修改单位 */
+    PlanInfo{modifiedDepBy(depName)} to RmsDep ,
+    //** 预案信息审核人员 */
+    PlanInfo{verifiedBy(userName)} to RmsUser ,
+    //** 预案信息审核单位 */
+    PlanInfo{verifiedDepBy(depName)} to RmsDep ,
+    //** 预案信息发布人员 */
+    PlanInfo{publishedBy(userName)} to RmsUser ,
+    //** 预案信息发布单位 */
+    PlanInfo{publishedDepBy(depName)} to RmsDep ,
+
+    //** 预案数据审核记录 */
+    PlanInfoData{verifyRec(name)}  to VerifyRec,
+    //** 预案数据类型 */
+	PlanInfoData{paraType(name)}  to ParaType,
+	//** 预案数据分类 */
+	PlanInfoData{paraClass(name)}  to ParaClass,
+	//** 预案数据类别 */
+	PlanInfoData{paraCat(name)}  to ParaCat,
+	//** 预案数据状态 */
+	PlanInfoData{paraState(name)}  to ParaState,
+	//** 预案数据来源 */
+	PlanInfoData{paraSource(name)}  to ParaSource,
+	//** 预案数据属性 */
+	PlanInfoData{paraAttr(name)}  to ParaAttr,
+    //** 预案数据特性 */
+    PlanInfoData{paraProp(name)}  to ParaProp,
+    //** 预案数据信息创建人员 */
+    PlanInfoData{createdBy(userName)}  to RmsUser ,
+    //** 预案数据信息创建单位 */
+    PlanInfoData{createdDepBy(depName)} to RmsDep ,
+    //** 预案数据信息所属人员 */
+    PlanInfoData{ownerBy(userName)}  to RmsUser ,
+    //** 预案数据信息所属单位 */
+    PlanInfoData{ownerDepBy(depName)} to RmsDep ,
+    //** 预案数据信息修改人员 */
+    PlanInfoData{modifiedBy(userName)} to RmsUser ,
+    //** 预案数据信息修改单位 */
+    PlanInfoData{modifiedDepBy(depName)} to RmsDep ,
+    //** 预案数据信息审核人员 */
+    PlanInfoData{verifiedBy(userName)} to RmsUser ,
+    //** 预案数据信息审核单位 */
+    PlanInfoData{verifiedDepBy(depName)} to RmsDep ,
+    //** 预案数据信息发布人员 */
+    PlanInfoData{publishedBy(userName)} to RmsUser ,
+    //** 预案数据信息发布单位 */
+    PlanInfoData{publishedDepBy(depName)} to RmsDep ,
+
+    //** 预案数据历史审核记录 */
+    PlanInfoDataHis{verifyRec(name)}  to VerifyRec,
+    //** 预案数据历史类型 */
+    PlanInfoDataHis{paraType(name)}  to ParaType,
+    //** 预案数据历史分类 */
+    PlanInfoDataHis{paraClass(name)}  to ParaClass,
+    //** 预案数据历史类别 */
+    PlanInfoDataHis{paraCat(name)}  to ParaCat,
+    //** 预案数据历史状态 */
+    PlanInfoDataHis{paraState(name)}  to ParaState,
+    //** 预案数据历史来源 */
+    PlanInfoDataHis{paraSource(name)}  to ParaSource,
+    //** 预案数据历史属性 */
+    PlanInfoDataHis{paraAttr(name)}  to ParaAttr,
+    //** 预案数据历史特性 */
+    PlanInfoDataHis{paraProp(name)}  to ParaProp,
+    //** 预案数据历史信息创建人员 */
+    PlanInfoDataHis{createdBy(userName)}  to RmsUser ,
+    //** 预案数据历史信息创建单位 */
+    PlanInfoDataHis{createdDepBy(depName)} to RmsDep ,
+    //** 预案数据历史信息所属人员 */
+    PlanInfoDataHis{ownerBy(userName)}  to RmsUser ,
+    //** 预案数据历史信息所属单位 */
+    PlanInfoDataHis{ownerDepBy(depName)} to RmsDep ,
+    //** 预案数据历史信息修改人员 */
+    PlanInfoDataHis{modifiedBy(userName)} to RmsUser ,
+    //** 预案数据历史信息修改单位 */
+    PlanInfoDataHis{modifiedDepBy(depName)} to RmsDep ,
+    //** 预案数据历史信息审核人员 */
+    PlanInfoDataHis{verifiedBy(userName)} to RmsUser ,
+    //** 预案数据历史信息审核单位 */
+    PlanInfoDataHis{verifiedDepBy(depName)} to RmsDep ,
+    //** 预案数据历史信息发布人员 */
+    PlanInfoDataHis{publishedBy(userName)} to RmsUser ,
+    //** 预案数据历史信息发布单位 */
+    PlanInfoDataHis{publishedDepBy(depName)} to RmsDep ,
+
+    //** 预案库模板步骤创建人员 */
+    PlanInfoStep{createdBy(userName)}  to RmsUser ,
+    //** 预案库模板步骤创建单位 */
+    PlanInfoStep{createdDepBy(depName)} to RmsDep ,
+    //** 预案库模板步骤修改人员 */
+    PlanInfoStep{modifiedBy(userName)} to RmsUser ,
+    //** 预案库模板步骤修改单位 */
+    PlanInfoStep{modifiedDepBy(depName)} to RmsDep ,
+    //** 预案库模板步骤审核人员 */
+    PlanInfoStep{verifiedBy(userName)} to RmsUser ,
+    //** 预案库模板步骤审核单位 */
+    PlanInfoDataHis{verifiedDepBy(depName)} to RmsDep ,
+
+    //** 预案库步骤数据创建人员 */
+    PlanInfoStepData{createdBy(userName)}  to RmsUser ,
+    //** 预案库步骤数据创建单位 */
+    PlanInfoStepData{createdDepBy(depName)} to RmsDep ,
+    //** 预案库步骤数据修改人员 */
+    PlanInfoStepData{modifiedBy(userName)} to RmsUser ,
+    //** 预案库步骤数据修改单位 */
+    PlanInfoStepData{modifiedDepBy(depName)} to RmsDep ,
+    //** 预案库步骤数据审核人员 */
+    PlanInfoStepData{verifiedBy(userName)} to RmsUser ,
+    //** 预案库步骤数据审核单位 */
+    PlanInfoStepData{verifiedDepBy(depName)} to RmsDep ,
+
+    //** 预案库步骤数据历史创建人员 */
+    PlanInfoStepDataHis{createdBy(userName)}  to RmsUser ,
+    //** 预案库步骤数据历史创建单位 */
+    PlanInfoStepDataHis{createdDepBy(depName)} to RmsDep ,
+    //** 预案库步骤数据历史修改人员 */
+    PlanInfoStepDataHis{modifiedBy(userName)} to RmsUser ,
+    //** 预案库步骤数据历史修改单位 */
+    PlanInfoStepDataHis{modifiedDepBy(depName)} to RmsDep ,
+    //** 预案库步骤数据历史审核人员 */
+    PlanInfoStepDataHis{verifiedBy(userName)} to RmsUser ,
+    //** 预案库步骤数据历史审核单位 */
+    PlanInfoStepDataHis{verifiedDepBy(depName)} to RmsDep ,
+
+    //** 预案库预案模板附件创建人员 */
+	PlanInfoAtch{createdBy(userName)}  to RmsUser ,
+	//** 预案库预案模板附件修改人员 */
+ 	PlanInfoAtch{modifiedBy(userName)} to RmsUser ,
+
+    //** 预案库预案步骤模板附件创建人员 */
+	PlanInfoStepAtch{createdBy(userName)}  to RmsUser ,
+    //** 预案库预案步骤模板附件修改人员 */
+ 	PlanInfoStepAtch{modifiedBy(userName)} to RmsUser ,
+
+
+     //** 预案库数据附件创建人员 */
+ 	PlanInfoDataAtch{createdBy(userName)}  to RmsUser ,
+ 	//** 预案库预案数据附件修改人员 */
+  	PlanInfoDataAtch{modifiedBy(userName)} to RmsUser ,
+
+     //** 预案库模板数据附件创建人员 */
+ 	PlanInfoStepDataAtch{createdBy(userName)}  to RmsUser ,
+ 	//** 预案库模板数据附件修改人员 */
+  	PlanInfoStepDataAtch{modifiedBy(userName)} to RmsUser ,
+
+     //** 预案库数据附件历史创建人员 */
+ 	PlanInfoDataAtchHis{createdBy(userName)}  to RmsUser ,
+ 	//** 预案库预案数据附件历史修改人员 */
+  	PlanInfoDataAtchHis{modifiedBy(userName)} to RmsUser ,
+
+     //** 预案库模板数据附件历史创建人员 */
+ 	PlanInfoStepDataAtchHis{createdBy(userName)}  to RmsUser ,
+ 	//** 预案库模板数据附件历史修改人员 */
+  	PlanInfoStepDataAtchHis{modifiedBy(userName)} to RmsUser ,
+
+	//** 审核记录创建人员 */
+	VerifyRec{createdBy(userName)}  to RmsUser ,
+	//** 审核记录修改人员 */
+ 	VerifyRec{modifiedBy(userName)} to RmsUser ,
+
+	//** 类型创建人员 */
+	ParaType{createdBy(userName)}  to RmsUser ,
+	//** 类型修改人员 */
+ 	ParaType{modifiedBy(userName)} to RmsUser ,
+    //** 类型审核人员 */
+ 	ParaType{verifiedBy(userName)} to RmsUser ,
+
+	//** 分类创建人员 */
+	ParaClass{createdBy(userName)}  to RmsUser ,
+	//** 分类修改人员 */
+ 	ParaClass{modifiedBy(userName)} to RmsUser ,
+	//** 分类审核人员 */
+ 	ParaClass{verifiedBy(userName)} to RmsUser ,
+
+	//** 类别创建人员 */
+	ParaCat{createdBy(userName)}  to RmsUser ,
+	//** 类别修改人员 */
+ 	ParaCat{modifiedBy(userName)} to RmsUser ,
+	//** 类别审核人员 */
+ 	ParaCat{verifiedBy(userName)} to RmsUser ,
+
+	//** 状态创建人员 */
+	ParaState{createdBy(userName)}  to RmsUser ,
+	//** 状态修改人员 */
+ 	ParaState{modifiedBy(userName)} to RmsUser ,
+	//** 状态审核人员 */
+ 	ParaState{verifiedBy(userName)} to RmsUser ,
+
+	//** 来源创建人员 */
+	ParaSource{createdBy(userName)}  to RmsUser ,
+	//** 来源修改人员 */
+ 	ParaSource{modifiedBy(userName)} to RmsUser ,
+	//** 来源审核人员 */
+ 	ParaSource{verifiedBy(userName)} to RmsUser ,
+
+    //** 属性创建人员 */
+    ParaProp{createdBy(userName)}  to RmsUser ,
+    //** 属性修改人员 */
+    ParaProp{modifiedBy(userName)} to RmsUser ,
+	//** 属性审核人员 */
+ 	ParaProp{verifiedBy(userName)} to RmsUser ,
+
+    //** 特性创建人员 */
+    ParaAttr{createdBy(userName)}  to RmsUser ,
+    //** 特性修改人员 */
+    ParaAttr{modifiedBy(userName)} to RmsUser ,
+	//** 特性审核人员 */
+ 	ParaAttr{verifiedBy(userName)} to RmsUser,
+
+    //** 用户创建人员 */
+    RmsUser{createdBy(userName)}  to RmsUser ,
+    //** 用户修改人员 */
+    RmsUser{modifiedBy(userName)} to RmsUser ,
+	//** 用户审核人员 */
+ 	RmsUser{verifiedBy(userName)} to RmsUser,
+
+    //** 人员创建人员 */
+    RmsPerson{createdBy(userName)}  to RmsUser ,
+    //** 人员修改人员 */
+    RmsPerson{modifiedBy(userName)} to RmsUser ,
+    //** 人员审核人员 */
+    RmsPerson{verifiedBy(userName)} to RmsUser,
+
+    //** 单位创建人员 */
+    RmsDep{createdBy(userName)}  to RmsUser ,
+    //** 单位修改人员 */
+    RmsDep{modifiedBy(userName)} to RmsUser ,
+    //** 单位审核人员 */
+    RmsDep{verifiedBy(userName)} to RmsUser,
+
+    //** 角色创建人员 */
+    RmsRole{createdBy(userName)}  to RmsUser ,
+    //** 角色修改人员 */
+    RmsRole{modifiedBy(userName)} to RmsUser ,
+    //** 角色审核人员 */
+    RmsRole{verifiedBy(userName)} to RmsUser,
+
+    //** 节点创建人员 */
+    RmsNode{createdBy(userName)}  to RmsUser ,
+    //** 节点修改人员 */
+    RmsNode{modifiedBy(userName)} to RmsUser ,
+    //** 节点审核人员 */
+    RmsNode{verifiedBy(userName)} to RmsUser,
+
+    //** 预案信息的父案信息 */
+    PlanInfo {parent(name)} to PlanInfo,
+    //** 预案数据信息的父预案数据信息 */
+    PlanInfoData {parent(name)} to PlanInfoData,
+    //** 预案数据信息历史的父预案数据信息历史 */
+    PlanInfoDataHis {parent(name)} to PlanInfoDataHis,
+    //** 类型的父类型 */
+    ParaType {parent(name)} to ParaType,
+    //** 分类的父分类 */
+    ParaClass {parent(name)} to ParaClass,
+    //** 类别的父类别 */
+    ParaCat {parent(name)} to ParaCat,
+    //** 状态的父状态 */
+    ParaState {parent(name)} to ParaState,
+    //** 来源的父来源 */
+    ParaSource {parent(name)} to ParaSource,
+    //** 属性的父属性 */
+    ParaProp {parent(name)} to ParaProp,
+    //** 特性的父特性 */
+    ParaAttr {parent(name)} to ParaAttr,
+    //** 单位的父单位 */
+    RmsDep {parent(depName)} to RmsDep,
+    //** 角色的父角色 */
+    RmsRole {parent(name)} to RmsRole,
+    //** 节点的父节点 */
+    RmsNode {parent(name)} to RmsNode,
+
+    //** 预案数据和预案模板 */
+    PlanInfoData{planInfo(name)}  to PlanInfo,
+    //** 预案数据历史和预案模板 */
+    PlanInfoDataHis{planInfo(name)}  to PlanInfo,
+    //** 预案步骤数据和预案模板步骤 */
+    PlanInfoStepData{planInfoStep(name)}  to PlanInfoStep,
+    //** 预案步骤数据历史和预案模板步骤 */
+    PlanInfoStepDataHis{planInfoStep(name)}  to PlanInfoStep,
+    //** 预案数据附件和预案模板附件 */
+    PlanInfoDataAtch{planInfoAtch(name)}  to PlanInfoAtch,
+    //** 预案数据附件历史和预案模板附件 */
+    PlanInfoDataAtchHis{planInfoAtch(name)}  to PlanInfoAtch,
+    //** 预案步骤数据和预案模板步骤附件 */
+    PlanInfoStepDataAtch{planInfoStepAtch(name)}  to PlanInfoStepAtch,
+    //** 预案步骤数据历史和预案模板步骤附件 */
+    PlanInfoStepDataAtchHis{planInfoStepAtch(name)}  to PlanInfoStepAtch,
+
+    //** 预案模板和预案步骤模板 */
+    PlanInfoStep{planInfo(name)}  to PlanInfo,
+	//** 预案模板和附件 */
+    PlanInfoAtch{planInfo(name)}  to PlanInfo,
+    //** 预案步骤模板和附件 */
+    PlanInfoStepAtch{planInfoStep(name)}  to PlanInfoStep,
+
+    //** 预案数据和预案步骤数据 */
+    PlanInfoStepData{planInfoData(name)}  to PlanInfoData,
+    //** 预案数据和数据附件 */
+    PlanInfoDataAtch{planInfoData(name)}  to PlanInfoData,
+    //** 预案步骤数据和数据附件 */
+    PlanInfoStepDataAtch{planInfoStepData(name)}  to PlanInfoStepData,
+
+    //** 预案数据历史和预案步骤数据历史 */
+    PlanInfoStepDataHis{planInfoDataHis(name)}  to PlanInfoDataHis,
+    //** 预案数据历史和数据附件历史 */
+    PlanInfoDataAtchHis{planInfoDataHis(name)}  to PlanInfoDataHis,
+    //** 预案步骤数据历史和数据附件历史 */
+    PlanInfoStepDataAtchHis{planInfoStepDataHis(name)}  to PlanInfoStepDataHis
+}
+
+relationship ManyToMany{
+    //** 角色和节点权限 */
+    RmsRole{rmsNode(name)} to RmsNode{rmsRole},
+    //** 用户和角色 */
+    RmsUser{rmsRole(name)} to RmsRole{rmsUser}
+}
+
+paginate  PlanInfo , PlanInfoStep,  PlanInfoAtch, PlanInfoStepAtch   with infinite-scroll
+paginate  PlanInfoData, PlanInfoStepData,PlanInfoDataAtch, PlanInfoStepDataAtch   with infinite-scroll
+paginate  PlanInfoDataHis, PlanInfoStepDataHis,PlanInfoDataAtchHis, PlanInfoStepDataAtchHis   with infinite-scroll
+paginate  VerifyRec , ParaType , ParaClass , ParaCat, ParaState , ParaSource , ParaAttr , ParaProp   with infinite-scroll
+paginate  RmsUser , RmsPerson, RmsDep , RmsRole , RmsNode  with infinite-scroll
+
+//paginate with pagination
+dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set filter
+filter PlanInfo , PlanInfoStep,  PlanInfoAtch, PlanInfoStepAtch
+filter PlanInfoData, PlanInfoStepData,PlanInfoDataAtch, PlanInfoStepDataAtch
+filter PlanInfoDataHis, PlanInfoStepDataHis,PlanInfoDataAtchHis, PlanInfoStepDataAtchHis
+filter VerifyRec , ParaType , ParaClass , ParaCat, ParaState , ParaSource , ParaAttr , ParaProp
+filter RmsUser , RmsPerson, RmsDep , RmsRole , RmsNode
+
+// Set an angular suffix
+angularSuffix * with sdmSuffix
+
+

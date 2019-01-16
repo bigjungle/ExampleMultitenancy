@@ -1,0 +1,303 @@
+{
+    "name": "RmsDep",
+    "fields": [
+        {
+            "fieldName": "depName",
+            "javadoc": "单位名称",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "depTypeId",
+            "javadoc": "单位类型代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "parentDepId",
+            "javadoc": "上级单位代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "repealFlag",
+            "javadoc": "撤销标志",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "levelId",
+            "javadoc": "等级代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 32
+        },
+        {
+            "fieldName": "depSort",
+            "javadoc": "单位序号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 10
+        },
+        {
+            "fieldName": "parentDepStr",
+            "javadoc": "上级单位字符串",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 2560
+        },
+        {
+            "fieldName": "childDepStr",
+            "javadoc": "子单位字符串",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 3999
+        },
+        {
+            "fieldName": "depDesc",
+            "javadoc": "单位说明",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "tel",
+            "javadoc": "电话",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "fax",
+            "javadoc": "传真",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "address",
+            "javadoc": "地址",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "code",
+            "javadoc": "代码",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 32
+        },
+        {
+            "fieldName": "internet",
+            "javadoc": "网站",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "mail",
+            "javadoc": "邮箱",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by01",
+            "javadoc": "备用01",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by02",
+            "javadoc": "备用02",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by03",
+            "javadoc": "备用03",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by04",
+            "javadoc": "备用04",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by05",
+            "javadoc": "备用05",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by06",
+            "javadoc": "备用06",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by07",
+            "javadoc": "备用07",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by08",
+            "javadoc": "备用08",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by09",
+            "javadoc": "备用09",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "by10",
+            "javadoc": "备用10",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        },
+        {
+            "fieldName": "validType",
+            "javadoc": "有效类型",
+            "fieldType": "ValidType",
+            "fieldValues": "LONG,SCOPE"
+        },
+        {
+            "fieldName": "validBegin",
+            "javadoc": "生效开始时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "validEnd",
+            "javadoc": "有效截止时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "insertTime",
+            "javadoc": "创建时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "updateTime",
+            "javadoc": "最后修改时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "verifyTime",
+            "javadoc": "审核时间",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "serialNumber",
+            "javadoc": "编号",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "maxlength"
+            ],
+            "fieldValidateRulesMaxlength": 256
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "createdBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "modifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "verifiedBy",
+            "otherEntityName": "rmsUser",
+            "otherEntityField": "userName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "rmsDep",
+            "otherEntityField": "depName"
+        }
+    ],
+    "changelogDate": "20190115083437",
+    "javadoc": "RmsDep 单位信息\n@author JungleYang.",
+    "entityTableName": "rms_dep",
+    "dto": "mapstruct",
+    "pagination": "infinite-scroll",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": true,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "sdmSuffix"
+}

@@ -1,0 +1,56 @@
+{
+    "plandbApp": {
+        "rmsNode": {
+            "home": {
+                "title": "Rms Nodes",
+                "createLabel": "创建新 Rms Node",
+                "createOrEditLabel": "创建或编辑 Rms Node",
+                "search": "查找 Rms Node"
+            },
+            "created": "Rms Node {{ param }} 创建成功",
+            "updated": "Rms Node {{ param }} 更新成功",
+            "deleted": "Rms Node {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Rms Node {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Rms Node"
+            },
+            "name": "Name",
+            "serialNumber": "Serial Number",
+            "sortString": "Sort String",
+            "descString": "Desc String",
+            "imageBlob": "Image Blob",
+            "imageBlobName": "Image Blob Name",
+            "usingFlag": "Using Flag",
+            "remarks": "Remarks",
+            "validType": "Valid Type",
+            "validBegin": "Valid Begin",
+            "validEnd": "Valid End",
+            "insertTime": "Insert Time",
+            "updateTime": "Update Time",
+            "verifyTime": "Verify Time",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "verifiedBy": "Verified By",
+            "parent": "Parent",
+            "rmsRole": "Rms Role",
+            "help": {
+                "name": "名称",
+                "serialNumber": "编号",
+                "sortString": "序号",
+                "descString": "描述",
+                "imageBlob": "图片附件",
+                "imageBlobName": "图片附件名称",
+                "usingFlag": "是否使用",
+                "remarks": "备注",
+                "validType": "有效类型",
+                "validBegin": "生效开始时间",
+                "validEnd": "有效截止时间",
+                "insertTime": "创建时间",
+                "updateTime": "最后修改时间",
+                "verifyTime": "审核时间"
+            }
+        }
+    }
+}

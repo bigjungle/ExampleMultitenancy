@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity RmsRole.
+    -->
+    <changeSet id="20190115083438-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="created_by_id"
+                                 baseTableName="rms_role"
+                                 constraintName="fk_rms_role_created_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="modified_by_id"
+                                 baseTableName="rms_role"
+                                 constraintName="fk_rms_role_modified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="verified_by_id"
+                                 baseTableName="rms_role"
+                                 constraintName="fk_rms_role_verified_by_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="parent_id"
+                                 baseTableName="rms_role"
+                                 constraintName="fk_rms_role_parent_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_role"/>
+
+        <addForeignKeyConstraint baseColumnNames="rms_roles_id"
+                                 baseTableName="rms_role_rms_node"
+                                 constraintName="fk_rms_role_rms_node_rms_roles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_role"/>
+        <addForeignKeyConstraint baseColumnNames="rms_nodes_id"
+                                 baseTableName="rms_role_rms_node"
+                                 constraintName="fk_rms_role_rms_node_rms_nodes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="rms_node"/>
+        
+    </changeSet>
+</databaseChangeLog>

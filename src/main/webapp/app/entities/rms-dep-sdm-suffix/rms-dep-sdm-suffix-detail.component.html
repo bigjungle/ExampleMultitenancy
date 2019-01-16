@@ -1,0 +1,175 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rmsDep">
+            <h2><span jhiTranslate="plandbApp.rmsDep.detail.title">Rms Dep</span> {{rmsDep.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.rmsDep.depName" [ngbTooltip]="'plandbApp.rmsDep.help.depName' | translate">Dep Name</span></dt>
+                <dd>
+                    <span>{{rmsDep.depName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.depTypeId" [ngbTooltip]="'plandbApp.rmsDep.help.depTypeId' | translate">Dep Type Id</span></dt>
+                <dd>
+                    <span>{{rmsDep.depTypeId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.parentDepId" [ngbTooltip]="'plandbApp.rmsDep.help.parentDepId' | translate">Parent Dep Id</span></dt>
+                <dd>
+                    <span>{{rmsDep.parentDepId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.repealFlag" [ngbTooltip]="'plandbApp.rmsDep.help.repealFlag' | translate">Repeal Flag</span></dt>
+                <dd>
+                    <span>{{rmsDep.repealFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.levelId" [ngbTooltip]="'plandbApp.rmsDep.help.levelId' | translate">Level Id</span></dt>
+                <dd>
+                    <span>{{rmsDep.levelId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.depSort" [ngbTooltip]="'plandbApp.rmsDep.help.depSort' | translate">Dep Sort</span></dt>
+                <dd>
+                    <span>{{rmsDep.depSort}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.parentDepStr" [ngbTooltip]="'plandbApp.rmsDep.help.parentDepStr' | translate">Parent Dep Str</span></dt>
+                <dd>
+                    <span>{{rmsDep.parentDepStr}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.childDepStr" [ngbTooltip]="'plandbApp.rmsDep.help.childDepStr' | translate">Child Dep Str</span></dt>
+                <dd>
+                    <span>{{rmsDep.childDepStr}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.depDesc" [ngbTooltip]="'plandbApp.rmsDep.help.depDesc' | translate">Dep Desc</span></dt>
+                <dd>
+                    <span>{{rmsDep.depDesc}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.tel" [ngbTooltip]="'plandbApp.rmsDep.help.tel' | translate">Tel</span></dt>
+                <dd>
+                    <span>{{rmsDep.tel}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.fax" [ngbTooltip]="'plandbApp.rmsDep.help.fax' | translate">Fax</span></dt>
+                <dd>
+                    <span>{{rmsDep.fax}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.address" [ngbTooltip]="'plandbApp.rmsDep.help.address' | translate">Address</span></dt>
+                <dd>
+                    <span>{{rmsDep.address}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.code" [ngbTooltip]="'plandbApp.rmsDep.help.code' | translate">Code</span></dt>
+                <dd>
+                    <span>{{rmsDep.code}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.internet" [ngbTooltip]="'plandbApp.rmsDep.help.internet' | translate">Internet</span></dt>
+                <dd>
+                    <span>{{rmsDep.internet}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.mail" [ngbTooltip]="'plandbApp.rmsDep.help.mail' | translate">Mail</span></dt>
+                <dd>
+                    <span>{{rmsDep.mail}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by01" [ngbTooltip]="'plandbApp.rmsDep.help.by01' | translate">By 01</span></dt>
+                <dd>
+                    <span>{{rmsDep.by01}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by02" [ngbTooltip]="'plandbApp.rmsDep.help.by02' | translate">By 02</span></dt>
+                <dd>
+                    <span>{{rmsDep.by02}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by03" [ngbTooltip]="'plandbApp.rmsDep.help.by03' | translate">By 03</span></dt>
+                <dd>
+                    <span>{{rmsDep.by03}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by04" [ngbTooltip]="'plandbApp.rmsDep.help.by04' | translate">By 04</span></dt>
+                <dd>
+                    <span>{{rmsDep.by04}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by05" [ngbTooltip]="'plandbApp.rmsDep.help.by05' | translate">By 05</span></dt>
+                <dd>
+                    <span>{{rmsDep.by05}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by06" [ngbTooltip]="'plandbApp.rmsDep.help.by06' | translate">By 06</span></dt>
+                <dd>
+                    <span>{{rmsDep.by06}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by07" [ngbTooltip]="'plandbApp.rmsDep.help.by07' | translate">By 07</span></dt>
+                <dd>
+                    <span>{{rmsDep.by07}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by08" [ngbTooltip]="'plandbApp.rmsDep.help.by08' | translate">By 08</span></dt>
+                <dd>
+                    <span>{{rmsDep.by08}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by09" [ngbTooltip]="'plandbApp.rmsDep.help.by09' | translate">By 09</span></dt>
+                <dd>
+                    <span>{{rmsDep.by09}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.by10" [ngbTooltip]="'plandbApp.rmsDep.help.by10' | translate">By 10</span></dt>
+                <dd>
+                    <span>{{rmsDep.by10}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.validType" [ngbTooltip]="'plandbApp.rmsDep.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + rmsDep.validType}}">{{rmsDep.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.validBegin" [ngbTooltip]="'plandbApp.rmsDep.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{rmsDep.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.validEnd" [ngbTooltip]="'plandbApp.rmsDep.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{rmsDep.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.insertTime" [ngbTooltip]="'plandbApp.rmsDep.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{rmsDep.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.updateTime" [ngbTooltip]="'plandbApp.rmsDep.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{rmsDep.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.verifyTime" [ngbTooltip]="'plandbApp.rmsDep.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{rmsDep.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.serialNumber" [ngbTooltip]="'plandbApp.rmsDep.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{rmsDep.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="rmsDep.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsDep.createdById, 'view']">{{rmsDep.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsDep.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsDep.modifiedById, 'view']">{{rmsDep.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsDep.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsDep.verifiedById, 'view']">{{rmsDep.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsDep.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="rmsDep.parentId">
+                        <a [routerLink]="['/rms-dep-sdm-suffix', rmsDep.parentId, 'view']">{{rmsDep.parentDepName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rms-dep-sdm-suffix', rmsDep.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

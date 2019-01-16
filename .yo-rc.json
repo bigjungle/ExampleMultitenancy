@@ -32,5 +32,9 @@
         "enableTranslation": true,
         "nativeLanguage": "zh-cn",
         "languages": ["zh-cn", "en"]
+    },
+    "generator-jhipster-multitenancy": {
+        "tenantName": "company",
+        "tenantisedEntities": ["planinfo"]
     }
 }

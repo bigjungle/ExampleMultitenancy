@@ -1,0 +1,73 @@
+{
+    "plandbApp": {
+        "rmsUser": {
+            "home": {
+                "title": "Rms Users",
+                "createLabel": "创建新 Rms User",
+                "createOrEditLabel": "创建或编辑 Rms User",
+                "search": "查找 Rms User"
+            },
+            "created": "Rms User {{ param }} 创建成功",
+            "updated": "Rms User {{ param }} 更新成功",
+            "deleted": "Rms User {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Rms User {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Rms User"
+            },
+            "userName": "User Name",
+            "personId": "Person Id",
+            "userPassword": "User Password",
+            "processPassword": "Process Password",
+            "userSort": "User Sort",
+            "userDesc": "User Desc",
+            "userPasswordValiInstantTimes": "User Password Vali Instant Times",
+            "userPasswordLockFlag": "User Password Lock Flag",
+            "procPasswordValiInstantTimes": "Proc Password Vali Instant Times",
+            "procPasswordLockFlag": "Proc Password Lock Flag",
+            "userProp": "User Prop",
+            "by01": "By 01",
+            "by02": "By 02",
+            "by03": "By 03",
+            "by04": "By 04",
+            "by05": "By 05",
+            "validType": "Valid Type",
+            "validBegin": "Valid Begin",
+            "validEnd": "Valid End",
+            "insertTime": "Insert Time",
+            "updateTime": "Update Time",
+            "verifyTime": "Verify Time",
+            "serialNumber": "Serial Number",
+            "createdBy": "Created By",
+            "modifiedBy": "Modified By",
+            "verifiedBy": "Verified By",
+            "rmsRole": "Rms Role",
+            "help": {
+                "userName": "姓名",
+                "personId": "人员代码",
+                "userPassword": "用户密码",
+                "processPassword": "办理密码",
+                "userSort": "用户序号",
+                "userDesc": "用户说明",
+                "userPasswordValiInstantTimes": "用户密码校验时长",
+                "userPasswordLockFlag": "用户密码锁定标志",
+                "procPasswordValiInstantTimes": "处理密码校验时长",
+                "procPasswordLockFlag": "用户密码锁定标志",
+                "userProp": "是否使用",
+                "by01": "备用01",
+                "by02": "备用02",
+                "by03": "备用03",
+                "by04": "备用04",
+                "by05": "备用05",
+                "validType": "有效类型",
+                "validBegin": "生效开始时间",
+                "validEnd": "有效截止时间",
+                "insertTime": "创建时间",
+                "updateTime": "最后修改时间",
+                "verifyTime": "审核时间",
+                "serialNumber": "编号"
+            }
+        }
+    }
+}

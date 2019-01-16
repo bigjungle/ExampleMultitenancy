@@ -1,0 +1,257 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="rmsPerson">
+            <h2><span jhiTranslate="plandbApp.rmsPerson.detail.title">Rms Person</span> {{rmsPerson.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="plandbApp.rmsPerson.personName" [ngbTooltip]="'plandbApp.rmsPerson.help.personName' | translate">Person Name</span></dt>
+                <dd>
+                    <span>{{rmsPerson.personName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.firstName" [ngbTooltip]="'plandbApp.rmsPerson.help.firstName' | translate">First Name</span></dt>
+                <dd>
+                    <span>{{rmsPerson.firstName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.jobId" [ngbTooltip]="'plandbApp.rmsPerson.help.jobId' | translate">Job Id</span></dt>
+                <dd>
+                    <span>{{rmsPerson.jobId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.lastName" [ngbTooltip]="'plandbApp.rmsPerson.help.lastName' | translate">Last Name</span></dt>
+                <dd>
+                    <span>{{rmsPerson.lastName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.otherName" [ngbTooltip]="'plandbApp.rmsPerson.help.otherName' | translate">Other Name</span></dt>
+                <dd>
+                    <span>{{rmsPerson.otherName}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.sex" [ngbTooltip]="'plandbApp.rmsPerson.help.sex' | translate">Sex</span></dt>
+                <dd>
+                    <span>{{rmsPerson.sex}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.birthday" [ngbTooltip]="'plandbApp.rmsPerson.help.birthday' | translate">Birthday</span></dt>
+                <dd>
+                    <span>{{rmsPerson.birthday}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.pic" [ngbTooltip]="'plandbApp.rmsPerson.help.pic' | translate">Pic</span></dt>
+                <dd>
+                    <span>{{rmsPerson.pic}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.icon" [ngbTooltip]="'plandbApp.rmsPerson.help.icon' | translate">Icon</span></dt>
+                <dd>
+                    <span>{{rmsPerson.icon}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.mobile" [ngbTooltip]="'plandbApp.rmsPerson.help.mobile' | translate">Mobile</span></dt>
+                <dd>
+                    <span>{{rmsPerson.mobile}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.depAddress" [ngbTooltip]="'plandbApp.rmsPerson.help.depAddress' | translate">Dep Address</span></dt>
+                <dd>
+                    <span>{{rmsPerson.depAddress}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.depCode" [ngbTooltip]="'plandbApp.rmsPerson.help.depCode' | translate">Dep Code</span></dt>
+                <dd>
+                    <span>{{rmsPerson.depCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.dutyId" [ngbTooltip]="'plandbApp.rmsPerson.help.dutyId' | translate">Duty Id</span></dt>
+                <dd>
+                    <span>{{rmsPerson.dutyId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.dimissionFlag" [ngbTooltip]="'plandbApp.rmsPerson.help.dimissionFlag' | translate">Dimission Flag</span></dt>
+                <dd>
+                    <span>{{rmsPerson.dimissionFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.headerFlag" [ngbTooltip]="'plandbApp.rmsPerson.help.headerFlag' | translate">Header Flag</span></dt>
+                <dd>
+                    <span>{{rmsPerson.headerFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.satrapFlag" [ngbTooltip]="'plandbApp.rmsPerson.help.satrapFlag' | translate">Satrap Flag</span></dt>
+                <dd>
+                    <span>{{rmsPerson.satrapFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.leaderFlag" [ngbTooltip]="'plandbApp.rmsPerson.help.leaderFlag' | translate">Leader Flag</span></dt>
+                <dd>
+                    <span>{{rmsPerson.leaderFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.postFlag1" [ngbTooltip]="'plandbApp.rmsPerson.help.postFlag1' | translate">Post Flag 1</span></dt>
+                <dd>
+                    <span>{{rmsPerson.postFlag1}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.postFlag2" [ngbTooltip]="'plandbApp.rmsPerson.help.postFlag2' | translate">Post Flag 2</span></dt>
+                <dd>
+                    <span>{{rmsPerson.postFlag2}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.postFlag3" [ngbTooltip]="'plandbApp.rmsPerson.help.postFlag3' | translate">Post Flag 3</span></dt>
+                <dd>
+                    <span>{{rmsPerson.postFlag3}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.officeTel" [ngbTooltip]="'plandbApp.rmsPerson.help.officeTel' | translate">Office Tel</span></dt>
+                <dd>
+                    <span>{{rmsPerson.officeTel}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.fax" [ngbTooltip]="'plandbApp.rmsPerson.help.fax' | translate">Fax</span></dt>
+                <dd>
+                    <span>{{rmsPerson.fax}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.mail1" [ngbTooltip]="'plandbApp.rmsPerson.help.mail1' | translate">Mail 1</span></dt>
+                <dd>
+                    <span>{{rmsPerson.mail1}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.mail2" [ngbTooltip]="'plandbApp.rmsPerson.help.mail2' | translate">Mail 2</span></dt>
+                <dd>
+                    <span>{{rmsPerson.mail2}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.familyTel" [ngbTooltip]="'plandbApp.rmsPerson.help.familyTel' | translate">Family Tel</span></dt>
+                <dd>
+                    <span>{{rmsPerson.familyTel}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.familyAdd" [ngbTooltip]="'plandbApp.rmsPerson.help.familyAdd' | translate">Family Add</span></dt>
+                <dd>
+                    <span>{{rmsPerson.familyAdd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.familyCode" [ngbTooltip]="'plandbApp.rmsPerson.help.familyCode' | translate">Family Code</span></dt>
+                <dd>
+                    <span>{{rmsPerson.familyCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.personDesc" [ngbTooltip]="'plandbApp.rmsPerson.help.personDesc' | translate">Person Desc</span></dt>
+                <dd>
+                    <span>{{rmsPerson.personDesc}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.idCode" [ngbTooltip]="'plandbApp.rmsPerson.help.idCode' | translate">Id Code</span></dt>
+                <dd>
+                    <span>{{rmsPerson.idCode}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.pop3" [ngbTooltip]="'plandbApp.rmsPerson.help.pop3' | translate">Pop 3</span></dt>
+                <dd>
+                    <span>{{rmsPerson.pop3}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.smtp" [ngbTooltip]="'plandbApp.rmsPerson.help.smtp' | translate">Smtp</span></dt>
+                <dd>
+                    <span>{{rmsPerson.smtp}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.mailUsername" [ngbTooltip]="'plandbApp.rmsPerson.help.mailUsername' | translate">Mail Username</span></dt>
+                <dd>
+                    <span>{{rmsPerson.mailUsername}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.mailPassword" [ngbTooltip]="'plandbApp.rmsPerson.help.mailPassword' | translate">Mail Password</span></dt>
+                <dd>
+                    <span>{{rmsPerson.mailPassword}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.mailKeepFlag" [ngbTooltip]="'plandbApp.rmsPerson.help.mailKeepFlag' | translate">Mail Keep Flag</span></dt>
+                <dd>
+                    <span>{{rmsPerson.mailKeepFlag}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.personSort" [ngbTooltip]="'plandbApp.rmsPerson.help.personSort' | translate">Person Sort</span></dt>
+                <dd>
+                    <span>{{rmsPerson.personSort}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.levelNum" [ngbTooltip]="'plandbApp.rmsPerson.help.levelNum' | translate">Level Num</span></dt>
+                <dd>
+                    <span>{{rmsPerson.levelNum}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.personStateId" [ngbTooltip]="'plandbApp.rmsPerson.help.personStateId' | translate">Person State Id</span></dt>
+                <dd>
+                    <span>{{rmsPerson.personStateId}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by01" [ngbTooltip]="'plandbApp.rmsPerson.help.by01' | translate">By 01</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by01}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by02" [ngbTooltip]="'plandbApp.rmsPerson.help.by02' | translate">By 02</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by02}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by03" [ngbTooltip]="'plandbApp.rmsPerson.help.by03' | translate">By 03</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by03}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by04" [ngbTooltip]="'plandbApp.rmsPerson.help.by04' | translate">By 04</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by04}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by05" [ngbTooltip]="'plandbApp.rmsPerson.help.by05' | translate">By 05</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by05}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by06" [ngbTooltip]="'plandbApp.rmsPerson.help.by06' | translate">By 06</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by06}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by07" [ngbTooltip]="'plandbApp.rmsPerson.help.by07' | translate">By 07</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by07}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by08" [ngbTooltip]="'plandbApp.rmsPerson.help.by08' | translate">By 08</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by08}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by09" [ngbTooltip]="'plandbApp.rmsPerson.help.by09' | translate">By 09</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by09}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.by10" [ngbTooltip]="'plandbApp.rmsPerson.help.by10' | translate">By 10</span></dt>
+                <dd>
+                    <span>{{rmsPerson.by10}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.validType" [ngbTooltip]="'plandbApp.rmsPerson.help.validType' | translate">Valid Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'plandbApp.ValidType.' + rmsPerson.validType}}">{{rmsPerson.validType}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.validBegin" [ngbTooltip]="'plandbApp.rmsPerson.help.validBegin' | translate">Valid Begin</span></dt>
+                <dd>
+                    <span>{{rmsPerson.validBegin}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.validEnd" [ngbTooltip]="'plandbApp.rmsPerson.help.validEnd' | translate">Valid End</span></dt>
+                <dd>
+                    <span>{{rmsPerson.validEnd}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.insertTime" [ngbTooltip]="'plandbApp.rmsPerson.help.insertTime' | translate">Insert Time</span></dt>
+                <dd>
+                    <span>{{rmsPerson.insertTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.updateTime" [ngbTooltip]="'plandbApp.rmsPerson.help.updateTime' | translate">Update Time</span></dt>
+                <dd>
+                    <span>{{rmsPerson.updateTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.verifyTime" [ngbTooltip]="'plandbApp.rmsPerson.help.verifyTime' | translate">Verify Time</span></dt>
+                <dd>
+                    <span>{{rmsPerson.verifyTime}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.serialNumber" [ngbTooltip]="'plandbApp.rmsPerson.help.serialNumber' | translate">Serial Number</span></dt>
+                <dd>
+                    <span>{{rmsPerson.serialNumber}}</span>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.createdBy">Created By</span></dt>
+                <dd>
+                    <div *ngIf="rmsPerson.createdById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsPerson.createdById, 'view']">{{rmsPerson.createdByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.modifiedBy">Modified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsPerson.modifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsPerson.modifiedById, 'view']">{{rmsPerson.modifiedByUserName}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="plandbApp.rmsPerson.verifiedBy">Verified By</span></dt>
+                <dd>
+                    <div *ngIf="rmsPerson.verifiedById">
+                        <a [routerLink]="['/rms-user-sdm-suffix', rmsPerson.verifiedById, 'view']">{{rmsPerson.verifiedByUserName}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/rms-person-sdm-suffix', rmsPerson.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

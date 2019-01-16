@@ -1,0 +1,9 @@
+{
+    "plandbApp": {
+        "ValidType": {
+            "null": "",
+            "LONG": "LONG",
+            "SCOPE": "SCOPE"
+        }
+    }
+}

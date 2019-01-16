@@ -1,0 +1,124 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="plandbApp.paraSource.home.title">Para Sources</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-para-source-sdm-suffix" [routerLink]="['/para-source-sdm-suffix/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="plandbApp.paraSource.home.createLabel">
+            Create new Para Source
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'plandbApp.paraSource.home.search' | translate }}">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="paraSources">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="plandbApp.paraSource.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="serialNumber"><span jhiTranslate="plandbApp.paraSource.serialNumber">Serial Number</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="sortString"><span jhiTranslate="plandbApp.paraSource.sortString">Sort String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="descString"><span jhiTranslate="plandbApp.paraSource.descString">Desc String</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlob"><span jhiTranslate="plandbApp.paraSource.imageBlob">Image Blob</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="imageBlobName"><span jhiTranslate="plandbApp.paraSource.imageBlobName">Image Blob Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="usingFlag"><span jhiTranslate="plandbApp.paraSource.usingFlag">Using Flag</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="remarks"><span jhiTranslate="plandbApp.paraSource.remarks">Remarks</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validType"><span jhiTranslate="plandbApp.paraSource.validType">Valid Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validBegin"><span jhiTranslate="plandbApp.paraSource.validBegin">Valid Begin</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="validEnd"><span jhiTranslate="plandbApp.paraSource.validEnd">Valid End</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="insertTime"><span jhiTranslate="plandbApp.paraSource.insertTime">Insert Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="updateTime"><span jhiTranslate="plandbApp.paraSource.updateTime">Update Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifyTime"><span jhiTranslate="plandbApp.paraSource.verifyTime">Verify Time</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="createdByUserName"><span jhiTranslate="plandbApp.paraSource.createdBy">Created By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="modifiedByUserName"><span jhiTranslate="plandbApp.paraSource.modifiedBy">Modified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="verifiedByUserName"><span jhiTranslate="plandbApp.paraSource.verifiedBy">Verified By</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parentName"><span jhiTranslate="plandbApp.paraSource.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let paraSource of paraSources ;trackBy: trackId">
+                <td><a [routerLink]="['/para-source-sdm-suffix', paraSource.id, 'view' ]">{{paraSource.id}}</a></td>
+                <td>{{paraSource.name}}</td>
+                <td>{{paraSource.serialNumber}}</td>
+                <td>{{paraSource.sortString}}</td>
+                <td>{{paraSource.descString}}</td>
+                <td>
+                    <a *ngIf="paraSource.imageBlob" (click)="openFile(paraSource.imageBlobContentType, paraSource.imageBlob)">
+                        <img [src]="'data:' + paraSource.imageBlobContentType + ';base64,' + paraSource.imageBlob" style="max-height: 30px;" alt="paraSource image"/>
+                    </a>
+                    <span *ngIf="paraSource.imageBlob">{{paraSource.imageBlobContentType}}, {{byteSize(paraSource.imageBlob)}}</span>
+                </td>
+                <td>{{paraSource.imageBlobName}}</td>
+                <td>{{paraSource.usingFlag}}</td>
+                <td>{{paraSource.remarks}}</td>
+                <td jhiTranslate="{{'plandbApp.ValidType.' + paraSource.validType}}">{{paraSource.validType}}</td>
+                <td>{{paraSource.validBegin | date:'medium'}}</td>
+                <td>{{paraSource.validEnd | date:'medium'}}</td>
+                <td>{{paraSource.insertTime | date:'medium'}}</td>
+                <td>{{paraSource.updateTime | date:'medium'}}</td>
+                <td>{{paraSource.verifyTime | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="paraSource.createdById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', paraSource.createdById , 'view' ]" >{{paraSource.createdByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paraSource.modifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', paraSource.modifiedById , 'view' ]" >{{paraSource.modifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paraSource.verifiedById">
+                        <a [routerLink]="['../rms-user-sdm-suffix', paraSource.verifiedById , 'view' ]" >{{paraSource.verifiedByUserName}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="paraSource.parentId">
+                        <a [routerLink]="['../para-source-sdm-suffix', paraSource.parentId , 'view' ]" >{{paraSource.parentName}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/para-source-sdm-suffix', paraSource.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/para-source-sdm-suffix', paraSource.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'para-source-sdm-suffix/'+ paraSource.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
